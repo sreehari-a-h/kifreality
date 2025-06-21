@@ -1,0 +1,2041 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aljada By Arada</title>
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <link rel="shortcut icon" href="{% static 'img/logo-kif.png' %}" type="image/x-icon">
+    <meta name="keywords" content="Aljada, Arada, Kifrealty Properties, Sharjah real estate, Aljada properties, Aljada apartments, Aljada villas, Aljada townhouses, Sharjah property investment, Arada developments, modern homes in Sharjah">
+    <meta name="description" content="Discover Aljada by Arada with Kifrealty Properties, Sharjah's premier lifestyle destination offering modern homes, world-class amenities, and a vibrant community. Explore a range of apartments, villas, and townhouses designed for contemporary living">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/18.3.5/css/intlTelInput.css" integrity="sha512-VXxcTT278CJV0mFYrCVNcWp8BckqU31nWRqrvRYtw8OB82j3mZb6WkmrCanFeO5xRlyw0lGV+U3Kym4+kMvmSg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/18.3.5/js/intlTelInput.min.js" integrity="sha512-KcjcQ2KL6oVcezrL/m6NO1PW13QMnEN5BM4/u1JV9Pu0kBQgn/TmK1W6diupb4vMuGtFnO6Ojg3nzWutkow9Uw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        *{
+            font-family: "Poppins", sans-serif;
+
+        }
+        .navbar{
+            width: 100%;
+            height: 60px;
+            background-color: #fff;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo{
+            width: 20%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .nav-logo img{
+            width: auto;
+            height: 100%;
+            object-fit: contain;
+        }
+        .nav-links{
+            width: 60%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+        .nav-links a{
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        .nav-links a:focus{
+            border-bottom: 2px solid black;
+            padding-bottom: 2px;
+        }
+        .hero{
+            background-image:linear-gradient(rgb(0,0,0,0.4),rgb(0,0,0,0.4)), url(https://www.arada.com/wp-content/uploads/2023/12/Aljada-Top-view.jpg);
+            width: 100%;
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+        }
+        .hero-content{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100vh;
+            flex-direction: column;
+        }
+        .hero-content h1{
+            font-size: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #fff;
+            padding: 5px;
+            transition: all 0.4s ease;
+        }
+        .hero-content h3{
+            font-size: 30px;
+            color: #fff;
+        }
+        .hero-content h4{
+            color: #fff;
+        }
+        .hero-content h2{
+            font-weight: 600;
+            font-size: 25px;
+            text-transform: uppercase;
+            background-color: #D0AD6A;
+            color: #fff;
+            transition: all 0.4s ease;
+            padding: 10px;
+        }
+        .hero-content h2:hover{
+            background-color: #fff;
+            color: #D0AD6A;
+            cursor: pointer;
+        }
+        .hero-content a{
+            text-decoration: none;
+        }
+        .hero-content button{
+            background-color: #D0AD6A;
+            color: #fff;
+            border: hidden;
+            border-radius: 10px;
+            width: 180px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-evenly;
+            height: 40px;
+            transition: all 0.5s ease;
+            font-weight: 600;
+        }
+        .hero-content button i{
+            display: none;
+        }
+        .hero-content button:hover i{
+            display: block;
+        }
+        /* From Uiverse.io by nathann09 */
+.form {
+  background-color: #fff;
+  display: block;
+  padding: 1rem;
+  max-width: 350px;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.form-title {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  text-align: center;
+  color: #000;
+}
+
+.input-container {
+  position: relative;
+}
+
+.input-container input, .form button {
+  outline: none;
+  border: 1px solid #e5e7eb;
+  margin: 8px 0;
+}
+
+.input-container input {
+  background-color: #fff;
+  height: 40px;
+  font-size: 0.875rem;
+  padding: 10px;
+  width: 100%;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.submit {
+  display: block;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  background-color: #D0AD6A;
+  color: #ffffff;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  width: 100%;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+}
+
+.signup-link {
+  color: #6B7280;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.signup-link a {
+  text-decoration: underline;
+}
+.hero-form{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.chat-box{
+    width: 220px;
+    height: 50px;
+    background-color: #25D366;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    z-index: 999;
+}
+.chat-box a{
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+}
+.chat-box a i{
+    margin-right: 10px;
+}
+ </style>
+ </head>
+<body>
+
+    <div class="navbar">
+        <div class="nav-logo">
+            <img src="{% static 'aljada/aljada.svg' %}" alt="">
+        </div>
+        <div class="nav-links">
+            <a href="#price">Price</a>
+            <a href="#floor">Floor Plan</a>
+            <a href="#amenities">Amenities</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#location">Location</a>
+            <a href="#virtual">Virtual Tour</a>
+        </div>
+        <div class="navbar-mobile">
+            <button type="button" class="toggle" id="toggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="sidebar" id='sidebar'>
+                <a href="" class="logo-sidebar"><img src="{% static 'aljada/aljada.svg' %}" alt="" height="50" width="auto"></a>
+                <ul>
+                  <li><a href="#price">PRICE</a></li>
+                   <li><a href="#floor">FLOOR PLAN</a></li>
+                    <li><a href="#amenities">AMENITIES</a></li>
+                    <li><a href="#gallery">GALLERY</a></li>
+                    <li><a href="#location">LOCATION</a></li>
+                    <li><a href="#virtual">VIRTUAL TOUR</a></li>
+                </ul>
+              </div>
+            </div>
+    </div>
+
+    <div class="chat-box">
+    <a target="_blank" href="https://wa.me/+971565797968?text=Hi!%20I'm%20interested%20in%20learning%20more%20about%20Aljada%20by%20Arada.%20Could%20you%20share%20more%20details%20about%20the%20properties%20and%20investment%20opportunities?"><i class="fa-brands fa-whatsapp"></i>Chat With Expert</a>
+</div>
+
+    <div class="hero">
+        <div class="container">
+                    <div class="hero-content">
+                        <h1>AL JADA BY ARADA</h1>
+                        <h3 class="mb-3">Starting Price: AED 659,000 Onwards</h3>
+                        <button id="open-btn">Enquire Now<i class="fa-solid fa-arrow-right-long"></i></button>
+                    </div>
+                </div>
+    </div>
+    <style>
+        .about{
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        .about h1{
+            font-weight: 600;
+            font-size: 40px;
+        }
+        .about h3{
+            font-size: 25px;
+        }
+        .about-image{
+            width: 100%;
+            height: 100%;
+        }
+        .about-image img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .about button{
+            border: hidden;
+            background-color: black;
+            color: #fff;
+            font-weight: 500;
+            transition:all 0.4s ease;
+            padding: 10px;
+        }
+        .about button:hover{
+            border:1px solid black;
+            color:#000;
+            background:none;
+        }
+        .about button i{
+            margin-right: 10px;
+        }
+        .amenities{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .section-amenity h1{
+            font-weight: 600;
+            font-size: 40px;
+        }
+        .amenity-card{
+            height: auto;
+            padding: 10px;
+            width: 100%;
+            height: auto;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        }
+        .amenity-card img{
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+        }
+        .section-amenity{
+            width: 100%;
+            background-color: #F4F4F4;
+            height: auto;
+        }
+        .amenity-card h3{
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+        .about h4{
+            font-size: 30px;
+            font-weight: 600;
+        }
+        .about li{
+            margin-bottom: 8px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        .description-card{
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-color: #fff;
+        color: #cfa14d;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+    }
+    .description-card span{
+        font-size: 14px;
+        font-weight: 600;
+        text-align:center;
+        color: #000;
+    }
+    .description-card h3{
+        font-size: 25px;
+        font-weight: 600;
+        text-align:center;
+    }
+    @media(min-width:320px) and (max-width:480px){
+        .description-card{
+            width:170px;
+            height:170px;
+            padding:10px;
+        }
+    }
+    </style>
+    <div class="container pt-4 pb-4">
+        <div class="row gy-3">
+            <div class="col-md-6">
+                <div class="about-image">
+                    <img src="https://arada.com/wp-content/uploads/2022/01/Arada-unveils-The-Boulevard-a-new-downtown-living-experience-at-Aljada-Sharjahs-largest-megaproject.jpg" alt="">
+                </div>
+        </div>
+        <div class="col-md-6">
+            <div class="about">
+                <h1>Overview Of Aljada</h1>
+                <h3 class="mb-2">By Arada</h3>
+                <p>Aljada is Sharjah’s newest address, a place where everything is possible. It’s a place where living, working, playing and learning all come together. It’s a place where the past meets the future, offering the best of both worlds. And it’s a place where you will be constantly surprised and delighted.</p>
+                <button class="mt-3" id="open-btn-brochure"><i class="fa-solid fa-file-arrow-down"></i>Request to Download Brochure</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container pt-4 pb-4">
+    <div class="row gx-4 gy-3">
+        <div class="col-md-3 col-6">
+            <div class="description-card">
+                <span class="">Project size</span>
+                <h3>24M sq.ft.</h3>
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+             <div class="description-card">
+                <span>Green space</span>
+                <h3>250,000 m2</h3>
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="description-card">
+                <span>Residential units</span>
+                <h3>25,000</h3>
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="description-card">
+                <span>Family entertainment</span>
+                <h3>1.9M sq.ft.</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container section-price pt-4 pb-4" id="price">
+    <h3 class="mb-3">Pricing</h3>
+    <div class="container">
+    <div class="row gx-4 gy-5">
+        <div class="col-md-4">
+<div class="card-kif">
+  <div class="card-details">
+    <img src="https://arada.com/wp-content/uploads/2023/05/nesba-descrp-490x220.jpg" alt="">
+    <h3 class="text-center mt-2">Nesba 2</h3>
+    <span class="mb-2">1 to 3 Bedroom</span>
+  </div>
+  <a class="card-button" id="open-btn-price">More info</a>
+</div>
+        </div>
+                <div class="col-md-4">
+<div class="card-kif">
+  <div class="card-details">
+    <img src="https://arada.com/wp-content/uploads/2023/12/il-teatro-490x220.jpg" alt="">
+    <h3 class="text-center mt-2">iltreato Residences</h3>
+    <span class="mb-2">1 to 3 Bedroom</span>
+  </div>
+  <a class="card-button" id="open-btn-price-2">More info</a>
+</div>
+        </div>
+                <div class="col-md-4">
+<div class="card-kif">
+  <div class="card-details">
+    <img src="https://arada.com/wp-content/uploads/2023/05/Rove-home-category-490x220.jpg" alt="">
+    <h3 class="text-center mt-2">Rove Home</h3>
+    <span class="mb-2">1 to 3 Bedroom</span>
+  </div>
+  <a class="card-button" id="open-btn-price-3">More info</a>
+</div>
+        </div>
+</div>
+</div>
+</div>
+    <div class="section-amenity pt-3 pb-3" id="amenities">
+    <div class="container pt-4 pb-4">
+        <h1 class="mb-3">Amenities</h1>
+        <div class="row gx-3 gy-3">
+                    <div class="col-md-3">
+                        <div class="amenity-card">
+                            <img src="{% static 'aljada/swimming-pool.png' %}" alt="">
+                            <h3>Swimming Pool</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="amenity-card">
+                            <img src="{% static 'aljada/gym.png' %}" alt="">
+                            <h3>Gym</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="amenity-card">
+                            <img src="{% static 'aljada/room.png' %}" alt="">
+                            <h3>Club house</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="amenity-card">
+                            <img src="{% static 'aljada/children.png' %}" alt="">
+                            <h3>Kids Play Area</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="amenity-card">
+                            <img src="{% static 'aljada/grossory.png' %}" alt="">
+                            <h3>Retail Center</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="amenity-card">
+                            <img src="{% static 'aljada/service.png' %}" alt="">
+                            <h3>Restaurants</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="amenity-card">
+                            <img src="{% static 'aljada/school.png' %}" alt="">
+                            <h3>International School</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="amenity-card">
+                            <img src="{% static 'aljada/yoga.png' %}" alt="">
+                            <h3>Landscape Gardens</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="amenity-card">
+                            <img src="{% static 'aljada/Garden-1.png' %}" alt="">
+                            <h3>Private Gardens</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="amenity-card">
+                            <img src="{% static 'aljada/tennis.png' %}" alt="">
+                            <h3>Tennis court</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="amenity-card">
+                            <img src="{% static 'aljada/amphitheatre.png' %}" alt="">
+                            <h3>Multipurpose Hall</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="amenity-card">
+                            <img src="{% static 'aljada/cctv.png' %}" alt="">
+                            <h3>Security System</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="amenity-card">
+                            <img src="{% static 'aljada/yoga.png' %}" alt="">
+                            <h3>Yoga, Aerobic & Zumba</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="amenity-card">
+                            <img src="{% static 'aljada/spa-salon.png' %}" alt="">
+                            <h3>Spa & Wellness</h3>
+                        </div>
+                    </div>
+                </div>
+    </div>
+</div>
+<style>
+    .section-price h3{
+        font-size: 40px;
+        font-weight: 600;
+    }
+    .price-card{
+        width: 100%;
+        height: 300px;
+        padding: 15px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+        justify-content: space-between;
+    }
+    .price-card h3{
+        font-size: 17px;
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: 700;
+    }
+    .price-card p{
+        font-size: 16px;
+        font-weight: 500;
+    }
+    .price-card h2{
+        font-size: 18px;
+        font-weight: 500;
+    }
+    .price-card button{
+        width: 200px;
+        height: 35px;
+        font-weight: 500;
+        border: hidden;
+        font-size: 14px;
+        transition: all 0.4s ease;
+        background-color: #000;
+        color: #fff;
+    }
+    .price-card button:hover{
+        border: hidden;
+        border: 1px solid #000;
+        background: #fff;
+        color: #000;
+    }
+    .price-card img{
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+    .section-floor h3{
+        font-size: 40px;
+        font-weight: 600;
+    }
+    .plan-card{
+        width: 100%;
+        height: 140px;
+        background-position: center;
+        background-size: contain;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .plan-card h3{
+        color: #fff;
+        font-size: 20px;
+        font-weight: 600;
+    }
+    .plan-card button{
+        width: 150px;
+        height: 40px;
+        background-color: #cfa14d;
+        color: #fff;
+        border: hidden;
+        border-radius: 20px;
+        font-weight: 500;
+    }
+    .section-virtual{
+        background-color: #f0f0f0;
+        height: auto;
+        width: 100%;
+    }
+    .two-buttons{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    .two-buttons button{
+        border: hidden;
+        border: 1px solid #D0AD6A;
+        color: #D0AD6A;
+        background-color: #fff;
+        font-weight: 500;
+        width: 200px;
+        height: 40px;
+    }
+    .two-buttons button.active, .two-buttons button:focus {
+    background-color: #D0AD6A;
+    color: #fff;
+}
+.card-kif {
+  width: 100%;
+  height: 250px;
+  border-radius: 20px;
+  background: #fff;
+  position: relative;
+  padding: 10px;
+  border: 2px solid #c3c6ce;
+  -webkit-transition: 0.5s ease-out;
+  transition: 0.5s ease-out;
+  overflow: visible;
+}
+
+.card-details {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.card-details img{
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.card-details h3{
+    font-size: 20px;
+    font-weight: 600;
+    color: #000;
+}
+.card-details span{
+    text-align: center;
+}
+.card-button {
+  text-decoration: none;
+  text-align: center;
+  -webkit-transform: translate(-50%, 125%);
+  -ms-transform: translate(-50%, 125%);
+  transform: translate(-50%, 125%);
+  width: 70%;
+  border-radius: 1rem;
+  border: none;
+  background-color: #D0AD6A;
+  color: #fff;
+  font-size: 1rem;
+  padding: .5rem 1rem;
+  position: absolute;
+  left: 50%;
+  font-weight: 600;
+  bottom: 0;
+  opacity: 0;
+  -webkit-transition: 0.3s ease-out;
+  transition: 0.3s ease-out;
+  cursor: pointer;
+}
+
+.text-body {
+  color: rgb(134, 134, 134);
+}
+
+/*Text*/
+.text-title {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+/*Hover*/
+.card-kif{
+  border-color: #D0AD6A;
+  -webkit-box-shadow: 10px 5px 18px 0 rgba(255, 255, 255, 0.877);
+  box-shadow: 10px 5px 18px 0 rgba(255, 255, 255, 0.877);
+}
+
+.card-button {
+  -webkit-transform: translate(-50%, 50%);
+  -ms-transform: translate(-50%, 50%);
+  transform: translate(-50%, 50%);
+  opacity: 1;
+}
+</style>
+<style>
+    .master-plan{
+        width: 100%;
+        height: 300px;
+        background-image: url(https://arada-nest-residences.drehomes.ae/images/masterplan.jpg);
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        transition: all 0.4s ease;
+        justify-content: center;
+    }
+    .master-plan:hover{
+        cursor: pointer;
+        background-image:linear-gradient(rgb(0,0,0,0.6),rgb(0,0,0,0.6)), url(https://arada-nest-residences.drehomes.ae/images/masterplan.jpg);
+    }
+    .master-plan:hover .master-plan-btn{
+        display: block;
+    }
+    .master-plan-btn{
+        width: 200px;
+        height: 40px;
+        font-weight: 600;
+        background-color: #fff;
+        color: #000;
+        display: none;
+        border: hidden;
+    }
+</style>
+<div class="container section-floor pt-4 pb-4" id="floor">
+    <h3 class="mb-4">Site Map & Floor Plans</h3>
+    <div class="row gy-3 gx-3">
+        <div class="col-md-6">
+            <div class="master-plan">
+                <button id="open-btn-bed-4" class="master-plan-btn">View Master Plan</button>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row gx-4 gy-3">
+                <div class="col-md-6">
+                <div class="plan-card" style="background-image:linear-gradient(rgb(0,0,0,0.4),rgb(0,0,0,0.4)), url({% static 'aljada/1-bd.jpg' %});">
+                    <h3 class="mb-3">1 BR</h3>
+                    <button id="open-btn-bed">Enquire Now</button>
+                </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="plan-card" style="background-image:linear-gradient(rgb(0,0,0,0.4),rgb(0,0,0,0.4)), url({% static 'aljada/2-bd.jpg' %});">
+                        <h3 class="mb-3">2 BR</h3>
+                        <button id="open-btn-bed-2">Enquire Now</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="plan-card" style="background-image:linear-gradient(rgb(0,0,0,0.4),rgb(0,0,0,0.4)), url({% static 'aljada/3-bd.jpg' %});">
+                        <h3 class="mb-3">3 BR</h3>
+                        <button id="open-btn-bed-3">Enquire Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .section-virtual h3{
+        font-weight: 600;
+        color: #000;
+        font-size: 40px;
+    }
+    .section-virtual p{
+        color: #fff;
+    }
+    .section-virtual img{
+        width: auto;
+        height: 200px;
+    }
+    .section-virtual button{
+        background-color: #fff;
+        color: black;
+        height: 40px;
+        width: 250px;
+        border: hidden;
+        border-radius: 5px;
+    }
+    .navbar-mobile{
+        display: none;
+    }
+    .virtual-image{
+        width: 100%;
+        height: 300px;
+        cursor: pointer;
+    }
+    .virtual-text{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .virtual-image img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    @media(min-width:320px) and (max-width:480px){
+        .nav-logo{
+            width: 30%;
+        }
+        .section-virtual img{
+            width: 100%;
+        }
+        .hero{
+            height: 300px;
+        }
+        .nav-links{
+            display: none;
+        }
+        .hero-content h1{
+            font-size: 30px;
+        }
+        .hero-content{
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-content h2{
+            font-size: 20px;
+            text-align: center;
+        }
+        .hero-content h3{
+            text-align: center;
+            font-size: 25px;
+        }
+        .navbar-mobile{
+        width: 20%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #toggle {
+  background:transparent;
+  border:none;
+  width:30px;
+  height:30px;
+  cursor:pointer;
+  outline:0;
+}
+#toggle i{
+    color:black;
+    font-size:20px;
+}
+.toggle span {
+  width:100%;
+  height:3px;
+  background:#555;
+  display:block;
+  position:relative;
+  coursor:pointer;
+}
+
+.toggle span:before,
+.toggle span:after {
+  content:'';
+  position:absolute;
+  left:0;
+  width:100%;
+  height:100%;
+  background:#555;
+  transition: all 0.3s ease-out;
+}
+
+.toggle span:before {
+  top:-8px;
+}
+
+.toggle span:after {
+  top:8px;
+}
+
+.toggle span.toggle {
+  background:transparent;
+}
+
+.toggle span.toggle:before {
+  top:0;
+  transform:rotate(-45deg);
+  background:#cfa14d;
+
+}
+
+.toggle span.toggle:after {
+  top:0;
+  transform:rotate(45deg);
+  background:#cfa14d;
+}
+.navbar img{
+    width: auto;
+    height: 100%;
+    object-fit: contain;
+}
+.sidebar {
+  background:#fff;
+  width:235px;
+  position:fixed;
+  top:0;
+  left:-235px;
+  z-index: 999;
+  height:100%;
+  box-shadow:0 2px 8px rgba(0,0,0,0.2);
+  padding-top:90px;
+  transition:all 0.3s ease-out;
+}
+
+.sidebar ul {
+  list-style:none;
+}
+
+.sidebar ul li {
+  display:block;
+}
+
+.sidebar ul li a {
+  padding:8px 15px;
+  font-size:16px;
+  color:black;
+  text-decoration:none;
+  display:block;
+  position:relative;
+  z-index:1;
+  transition:all 0.3s ease-out;
+  font-weight:500;
+}
+
+.sidebar ul li a i{
+    margin-right: 8px;
+    color: #cfa14d;
+}
+.sidebar ul li a:before {
+  content:'';
+  position:absolute;
+  bottom:0;
+  left:50%;
+  right:50%;
+  transform:translate(-50%,-50%);
+  width:0;
+  height:1px;
+  background:#cfa14d;
+  z-index:-1;
+  transition:all 0.3s ease-out;
+}
+
+.sidebar ul li a:hover:before {
+  width:100%;
+}
+
+.sidebar ul li a:hover {
+  color:#cfa14d;
+}
+
+.sidebarshow {
+  left:0;
+}
+.logo-sidebar{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo-sidebar img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+    .bg-video-container {
+  position: relative;
+  height: 80vh;
+  margin:auto;
+  width:100%;
+}
+
+.bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  margin-top:0;
+}
+.card_box{
+    height: 200px;
+}
+.navbar-links{
+    display: none;
+}
+    }
+</style>
+<div class="section-virtual pt-4 pb-4" id="virtual">
+    <div class="container pt-3 pb-3">
+        <div class="row gx-3 gy-3">
+            <div class="col-md-6">
+                <div class="virtual-text">
+                <h3>Virtual Tour</h3>
+            </div>
+        </div>
+    <div class="col-md-6">
+      <div class="virtual-image">
+        <img id="open-btn-video" src="{% static 'aljada/virtual-tour.jpg' %}" alt="">
+      </div>
+    </div>
+    </div>
+</div>
+</div>
+<style>
+    .section-location h3{
+        font-size: 40px;
+        font-weight: 600;
+    }
+    .section-location li{
+        font-size: 18px;
+        list-style-type: none;
+        margin-bottom:10px;
+    }
+    .section-location li i{
+        margin-right: 10px;
+        color: #D0AD6A;
+    }
+    .section-location li span{
+        font-weight: 600;
+    }
+    .location-image{
+        width: 100%;
+        height: 100%;
+    }
+    .location-image img{
+        width: 100%;
+        height: 100%;
+        cursor:zoom-in;
+        object-fit: cover;
+    }
+    .location-card{
+        width: 100%;
+        height: 120px;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background-color: #fff;
+    }
+    .location-card span{
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 500;
+        color: #000;
+        text-align: center;
+    }
+    .location-card img{
+        width: 50px;
+        height: 50px;
+    }
+</style>
+<div class="container section-location pt-4 pb-4" id="location">
+    <h3 class="mb-3">Location</h3>
+    <div class="row gx-4 gy-3">
+        <div class="col-md-8">
+            <div class="location-image">
+            <a href="{% static 'aljada/location.webp' %}" target="_blank"><img src="{% static 'aljada/location.webp' %}" alt=""></a>
+        </div>
+        </div>
+        <div class="col-md-4">
+            <div class="row gx-2 gy-2">
+                <div class="col-md-12">
+                    <div class="location-card">
+                        <img class="mb-2" src="{% static 'aljada/ico-1.png' %}" alt="">
+                        <span>3 MINUTES From University city</span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="location-card">
+                        <img class="mb-2" src="{% static 'aljada/ico-2.png' %}" alt="">
+                        <span>5 MINUTES From Sharjah International Airports</span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="location-card">
+                        <img class="mb-2" src="{% static 'aljada/ico-3.png' %}" alt="">
+                        <span>15 MINUTES From Sharjah Corniche</span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="location-card">
+                        <img class="mb-2" src="{% static 'aljada/ico-2.png' %}" alt="">
+                        <span>20 MINUTES From Dubai International Airport</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .gallery h3{
+        font-size: 40px;
+        font-weight: 600;
+    }
+    .gallery img{
+        cursor: zoom-in;
+    }
+    .gallery-left{
+        width: 100%;
+        height: 350px;
+    }
+    .gallery-left img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .gallery-right{
+        height: 160px;
+        width: 100%;
+    }
+    .gallery-right img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+</style>
+<div class="container gallery pt-4 pb-4" id="gallery">
+    <h3 class="mb-3">Gallery</h3>
+    <div class="row gx-3 gy-3">
+        <div class="col-md-7">
+            <div class="gallery-left">
+                <a target="_blank" href="https://www.sharjah-sales-office.com/Projects/Aljada/Sharjah-Projects/images/gallery1.jpg">
+                <img src="https://www.sharjah-sales-office.com/Projects/Aljada/Sharjah-Projects/images/gallery1.jpg" alt="">
+            </a>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="row gy-3 gx-3">
+                <div class="col-md-6">
+                    <div class="gallery-right">
+                        <a target="_blank" href="https://www.sharjah-sales-office.com/Projects/Aljada/Sharjah-Projects/images/gallery2.jpg">
+                        <img src="https://www.sharjah-sales-office.com/Projects/Aljada/Sharjah-Projects/images/gallery2.jpg" alt="">
+                    </a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="gallery-right">
+                        <a target="_blank" href="https://www.sharjah-sales-office.com/Projects/Aljada/Sharjah-Projects/images/gallery3.jpg">
+                        <img src="https://www.sharjah-sales-office.com/Projects/Aljada/Sharjah-Projects/images/gallery3.jpg" alt="">
+                    </a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="gallery-right">
+                        <a target="_blank" href="https://www.sharjah-sales-office.com/Projects/Aljada/Sharjah-Projects/images/gallery4.jpg">
+                        <img src="https://www.sharjah-sales-office.com/Projects/Aljada/Sharjah-Projects/images/gallery4.jpg" alt="">
+                    </a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="gallery-right">
+                        <a target="_blank" href="https://www.sharjah-sales-office.com/Projects/Aljada/Sharjah-Projects/images/gallery5.jpg">
+                        <img src="https://www.sharjah-sales-office.com/Projects/Aljada/Sharjah-Projects/images/gallery5.jpg" alt="">
+                    </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<style>
+    .section-base h3{
+        font-size: 40px;
+        font-weight: 600;
+    }
+</style>
+<div class="section-base">
+    <div class="container pt-4 pb-4">
+        <h3 class="mb-3">About The Developer</h3>
+        <p>Founded in 2016 with a launch focus on the Emirate of Sharjah, Arada has launched two major integrated projects that are already welcoming residents and visitors.</p>
+    </div>
+</div>
+<style>
+.popup-bed{
+    background-color:#c8c8c8;
+    width: 35%;
+    position: fixed;
+    transform: translate(-50%,-50%);
+    height: auto;
+    top: 50%;
+    left:50%;
+    padding:3%;
+    z-index: 100;
+    display: none;
+    text-align: center;
+}
+.popup-bed h3{
+    color: #000000;
+    font-weight: 600;
+}
+.popup-close-button-bed{
+    display: block;
+    position:absolute;
+    top:0;
+    right:0;
+    background-color: transparent;
+    font-size: 60px;
+    color: #cfa14d;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.contact-form-popup-bed input{
+  width: 100%;
+  height: 50px;
+  border: hidden;
+  outline: none;
+  border-bottom: 2px solid gray;
+  background:none;
+  color: black;
+  padding-left: 10px;
+  font-size: 14px;
+}
+.contact-form-popup-bed button{
+  width: 100%;
+  background-color: #D0AD6A;
+  color: #fff;
+  border: hidden;
+  font-weight: 600;
+  height: 50px;
+}
+@media(min-width:320px) and (max-width:480px){
+  .popup-bed{
+    width: 90%;
+    padding: 6%;
+  }
+}
+         .popup{
+    background-color:black;
+    width: 45%;
+    position: fixed;
+    transform: translate(-50%,-50%);
+    height: auto;
+    top: 50%;
+    left:50%;
+    padding:3%;
+    z-index: 100;
+    border-radius: 8px;
+    font-family: "Poppins",sans-serif;
+    display: none;
+    text-align: center;
+}
+.popup-close-button{
+    display: block;
+    position:absolute;
+    top:0;
+    right:0;
+    background-color: transparent;
+    font-size: 40px;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.contact-form-popup input{
+  width: 100%;
+  height: 50px;
+  border: hidden;
+  outline: none;
+  background-color: #fff;
+  color: black;
+  padding-left: 10px;
+  font-size: 14px;
+}
+.contact-form-popup button{
+  width: 100%;
+  background-color: #cfa14d;
+  color: #fff;
+  border: hidden;
+  font-weight: 600;
+  height: 50px;
+}
+@media(min-width:320px) and (max-width:480px){
+  .popup{
+    width: 90%;
+    padding: 6%;
+  }
+}
+.popup-price{
+    background-color:#c8c8c8;
+    width: 35%;
+    position: fixed;
+    transform: translate(-50%,-50%);
+    height: auto;
+    top: 50%;
+    left:50%;
+    padding:3%;
+    z-index: 100;
+    display: none;
+    text-align: center;
+}
+.popup-price h3{
+    color: #000000;
+    font-weight: 600;
+}
+.popup-close-button-price{
+    display: block;
+    position:absolute;
+    top:0;
+    right:0;
+    background-color: transparent;
+    font-size: 60px;
+    color: #cfa14d;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.contact-form-popup-price input{
+  width: 100%;
+  height: 50px;
+  border: hidden;
+  outline: none;
+  border-bottom: 2px solid gray;
+  background:none;
+  color: black;
+  padding-left: 10px;
+  font-size: 14px;
+}
+.contact-form-popup-price button{
+  width: 100%;
+  background-color: #D0AD6A;
+  color: #fff;
+  border: hidden;
+  font-weight: 600;
+  height: 50px;
+}
+@media(min-width:320px) and (max-width:480px){
+  .popup-price{
+    width: 90%;
+    padding: 6%;
+  }
+}
+.popup-brochure{
+    background-color:black;
+    width: 45%;
+    position: fixed;
+    transform: translate(-50%,-50%);
+    height: auto;
+    top: 50%;
+    left:50%;
+    padding:3%;
+    z-index: 100;
+    border-radius: 8px;
+    font-family: "Poppins",sans-serif;
+    display: none;
+    text-align: center;
+}
+.popup-brochure h3{
+    color: #fff;
+}
+.popup-close-button-brochure{
+    display: block;
+    position:absolute;
+    top:0;
+    right:0;
+    background-color: transparent;
+    font-size: 40px;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.contact-form-popup-brochure input{
+  width: 100%;
+  height: 50px;
+  border: hidden;
+  outline: none;
+  background-color: #fff;
+  color: black;
+  padding-left: 10px;
+  font-size: 14px;
+}
+.contact-form-popup-brochure button{
+  width: 100%;
+  background-color: #cfa14d;
+  color: #fff;
+  border: hidden;
+  font-weight: 600;
+  height: 50px;
+}
+@media(min-width:320px) and (max-width:480px){
+  .popup-brochure{
+    width: 90%;
+    padding: 6%;
+  }
+}
+.popup-video{
+    background-color:black;
+    width: 45%;
+    position: fixed;
+    transform: translate(-50%,-50%);
+    height: auto;
+    top: 50%;
+    left:50%;
+    padding:3%;
+    z-index: 100;
+    border-radius: 8px;
+    font-family: "Poppins",sans-serif;
+    display: none;
+    text-align: center;
+}
+.popup-video h3{
+    color: #fff;
+}
+.popup-close-button-video{
+    display: block;
+    position:absolute;
+    top:0;
+    right:0;
+    background-color: transparent;
+    font-size: 40px;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.contact-form-popup-video input{
+  width: 100%;
+  height: 50px;
+  border: hidden;
+  outline: none;
+  background-color: #fff;
+  color: black;
+  padding-left: 10px;
+  font-size: 14px;
+}
+.contact-form-popup-video button{
+  width: 100%;
+  background-color: #cfa14d;
+  color: #fff;
+  border: hidden;
+  font-weight: 600;
+  height: 50px;
+}
+@media(min-width:320px) and (max-width:480px){
+  .popup-video{
+    width: 90%;
+    padding: 6%;
+  }
+}
+/*====================
+	Footer
+====================== */
+
+/* Main Footer */
+footer .main-footer{	padding: 20px 0;	background: #000;}
+footer ul{	padding-left: 0;	list-style: none;}
+
+/* Copy Right Footer */
+.footer-copyright {	background: #000;	padding: 5px 0;}
+.footer-copyright .logo {    display: inherit;}
+.footer-copyright nav {    float: right;    margin-top: 5px;}
+.footer-copyright nav ul {	list-style: none;	margin: 0;	padding: 0;}
+.footer-copyright nav ul li {	border-left: 1px solid #505050;	display: inline-block;	line-height: 12px;	margin: 0;	padding: 0 8px;}
+.footer-copyright nav ul li a{	color: #969696;}
+.footer-copyright nav ul li:first-child {	border: medium none;	padding-left: 0;}
+.footer-copyright p {	color: #969696;	margin: 2px 0 0;}
+
+/* Footer Top */
+.footer-top{	background: #252525;	padding-bottom: 30px;	margin-bottom: 30px;	border-bottom: 3px solid #222;}
+
+/* Footer transparent */
+footer.transparent .footer-top, footer.transparent .main-footer{	background: transparent;}
+footer.transparent .footer-copyright{	background: none repeat scroll 0 0 rgba(0, 0, 0, 0.3) ;}
+
+/* Footer light */
+footer.light .footer-top{	background: #f9f9f9;}
+footer.light .main-footer{	background: #f9f9f9;}
+footer.light .footer-copyright{	background: none repeat scroll 0 0 rgba(255, 255, 255, 0.3) ;}
+
+/* Footer 4 */
+.footer- .logo {    display: inline-block;}
+
+/*====================
+	Widgets
+====================== */
+.widget{	padding: 20px;	margin-bottom: 40px;}
+.widget.widget-last{	margin-bottom: 0px;}
+.widget.no-box{	padding: 0;	background-color: transparent;	margin-bottom: 40px;
+	box-shadow: none; -webkit-box-shadow: none; -moz-box-shadow: none; -ms-box-shadow: none; -o-box-shadow: none;}
+.widget.subscribe p{	margin-bottom: 18px;}
+.widget li a{	color: #fff;text-decoration: none;}
+.widget li a:hover{	color: #4b92dc;}
+.widget-title {margin-bottom: 20px;}
+.widget-title span {background: #839FAD none repeat scroll 0 0;display: block; height: 1px;margin-top: 25px;position: relative;width: 20%;}
+.widget-title span::after {background: inherit;content: "";height: inherit;    position: absolute;top: -4px;width: 50%;}
+.widget-title.text-center span,.widget-title.text-center span::after {margin-left: auto;margin-right:auto;left: 0;right: 0;}
+.widget .badge{	float: right;	background: #7f7f7f;}
+.widget.subscribe img{
+    width: auto;
+    height: 100px;
+    object-fit: cover;
+
+}
+.typo-light h1,
+.typo-light h2,
+.typo-light h3,
+.typo-light h4,
+.typo-light h5,
+.typo-light h6,
+.typo-light p,
+.typo-light div,
+.typo-light span,
+.typo-light small{	color: #fff;}
+
+ul.social-footer2 {	margin: 0;padding: 0;	width: auto;}
+ul.social-footer2 li {display: inline-block;padding: 0;}
+ul.social-footer2 li a:hover {background-color:#D0AD6A;}
+ul.social-footer2 li a {display: block;	height:30px;width: 30px;text-align: center;}
+.btn{background-color: #000; color:#fff;}
+.btn:hover, .btn:focus, .btn.active {background: #000;color: #fff;
+-webkit-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+-moz-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+-ms-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+-o-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+-webkit-transition: all 250ms ease-in-out 0s;
+-moz-transition: all 250ms ease-in-out 0s;
+-ms-transition: all 250ms ease-in-out 0s;
+-o-transition: all 250ms ease-in-out 0s;
+transition: all 250ms ease-in-out 0s;
+
+}
+</style>
+<footer id="footer" class="footer-1">
+    <div class="main-footer widgets-dark typo-light">
+    <div class="container">
+    <div class="row">
+
+    <div class="col-xs-12 col-sm-6 col-md-3">
+    <div class="widget subscribe no-box">
+    <h5 class="widget-title">KIF REALTY<span></span></h5>
+    <img src="{% static 'img/logo-kif.png' %}" alt="">
+    </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-3">
+    <div class="widget no-box">
+    <h5 class="widget-title">Quick Links<span></span></h5>
+    <ul class="thumbnail-widget">
+    <li>
+    <div class="thumb-content"><a href="#master">Master Plan</a></div>
+    </li>
+    <li>
+    <div class="thumb-content"><a href="#location">Location</a></div>
+    </li>
+    <li>
+    <div class="thumb-content"><a href="#price">Pricing</a></div>
+    </li>
+    <li>
+    <div class="thumb-content"><a href="#gallery">Gallery</a></div>
+    </li>
+    <li>
+    <div class="thumb-content"><a href="#about">About</a></div>
+    </li>
+    </ul>
+    </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-3">
+    <div class="widget no-box">
+    <h5 class="widget-title">Get Started<span></span></h5>
+    <a class="btn" href="mailto:info@kifrealty.com" target="_blank">Subscribe Now</a>
+    </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-3">
+
+    <div class="widget no-box">
+    <h5 class="widget-title">Contact Us<span></span></h5>
+
+    <p><a href="mailto:info@kifrealty.com" title="glorythemes">info@kifrealty.com</a></p>
+    <ul class="social-footer2">
+    <li class=""><a title="youtube" target="_blank" href="https://bit.ly/3m9avif"><i class="fa-brands fa-facebook"></i></a></li>
+    <li class=""><a href="https://www.facebook.com/" target="_blank" title="Facebook"><i class="fa-brands fa-whatsapp"></i></a></li>
+    <li class=""><a href="https://twitter.com" target="_blank" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a></li>
+    <li class=""><a title="instagram" target="_blank" href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a></li>
+    </ul>
+    </div>
+    </div>
+
+    </div>
+    </div>
+    </div>
+
+    <div class="footer-copyright">
+    <div class="container">
+    <div class="row">
+    <div class="col-md-12 text-center">
+    <p>Copyright kifrealty © 2024. All rights reserved.</p>
+    </div>
+    </div>
+    </div>
+    </div>
+    </footer>
+<div class="popup-video" id="popup-main-video">
+    <button class="popup-close-button-video" id="close-video">&times;</button>
+    <div class="popup-content" id="popup-content-id-video">
+        <h3 class=" mb-3">Virtual Site Tour</h3>
+  <form class="contact-form-popup-video " id="contact-form-video" action="https://api.web3forms.com/submit" method="POST" onsubmit="return submitFormvideo(event)">
+                  <input type="hidden" name="access_key" value="681ecd1d-e262-4f01-8b3c-3caa8812cd1f">
+              <input type="hidden" name="subject" id="" value="Virtual Tour Request From Aljada">
+      <div class="d-flex mb-3 flex-column">
+      <input type="text" name="Full name" id="fname-3" class="" placeholder="Full name*" required>
+      <span class="error-message" id="fname-error-3"></span>
+      </div>
+      <div class="d-flex mb-3 flex-column">
+          <input type="hidden" id="countryCode-popup" name="CountryCode" class="countrycode">
+      <input type="text" name="phone number" id="phone-3" class="phone-input" placeholder="Mobile number*" >
+      <span class="error-message" id="phone-error-3"></span>
+      </div>
+      <div class="d-flex flex-column mb-3">
+      <input type="text" name="email" id="email-3" class="" placeholder="Email*" >
+      <span class="error-message" id="email-error-3"></span>
+      </div>
+      <button type="submit" value="">REQUEST NOW</button>
+  </form>
+    </div>
+</div>
+
+<div class="popup-bed" id="popup-main-plan">
+    <button class="popup-close-button-bed" id="close-bed">&times;</button>
+    <div class="popup-content" id="popup-content-id">
+        <h3 class=" mb-3">Plan Details</h3>
+  <form class="contact-form-popup-bed " id="contact-form-plan" action="https://api.web3forms.com/submit" method="POST" onsubmit="return submitFormPlan(event)">
+                  <input type="hidden" name="access_key" value="681ecd1d-e262-4f01-8b3c-3caa8812cd1f">
+              <input type="hidden" name="subject" id="subject-register-3" value="Floor Plan Request From Aljada">
+      <div class="d-flex mb-3 flex-column">
+      <input type="text" name="Full name" id="fname-3" class="" placeholder="Full name*" required>
+      <span class="error-message" id="fname-error-3"></span>
+      </div>
+      <div class="d-flex mb-3 flex-column">
+          <input type="hidden" id="countryCode-popup" name="CountryCode" class="countrycode">
+      <input type="text" name="phone number" id="phone-3" class="phone-input" placeholder="Mobile number*" >
+      <span class="error-message" id="phone-error-3"></span>
+      </div>
+      <div class="d-flex flex-column mb-3">
+      <input type="text" name="email" id="email-3" class="" placeholder="Email*" >
+      <span class="error-message" id="email-error-3"></span>
+      </div>
+      <button type="submit" value="">REQUEST NOW</button>
+  </form>
+    </div>
+</div>
+
+<div class="popup-brochure" id="popup-main-brochure">
+    <button class="popup-close-button-brochure" id="close-brochure">&times;</button>
+    <div class="popup-content" id="popup-content-id">
+        <h3 class=" mb-3">Download Brochure</h3>
+  <form class="contact-form-popup-brochure " id="contact-form-brochure" action="https://api.web3forms.com/submit" method="POST" onsubmit="return submitFormBrochure(event)">
+                  <input type="hidden" name="access_key" value="681ecd1d-e262-4f01-8b3c-3caa8812cd1f">
+              <input type="hidden" name="subject" id="subject-register-3" value="Brochure Download Request From Aljada">
+      <div class="d-flex mb-3 flex-column">
+      <input type="text" name="Full name" id="fname-3" class="" placeholder="Full name*" required>
+      <span class="error-message" id="fname-error-3"></span>
+      </div>
+      <div class="d-flex mb-3 flex-column">
+          <input type="hidden" id="countrycode-brochure" class="countrycode" name="Country Code">
+      <input type="text" name="phone number" id="phone-brochure" class="phone-input" placeholder="Mobile number*" >
+      <span class="error-message" id="phone-error-3"></span>
+      </div>
+      <div class="d-flex flex-column mb-3">
+      <input type="text" name="email" id="email-3" class="" placeholder="Email*" >
+      <span class="error-message" id="email-error-3"></span>
+      </div>
+      <button type="submit" value="">REQUEST NOW</button>
+  </form>
+    </div>
+</div>
+
+<div class="popup-price" id="popup-main-price">
+    <button class="popup-close-button-price" id="close-price">&times;</button>
+    <div class="popup-content" id="popup-content-id-price">
+        <h3 class=" mb-3">Costing Details</h3>
+  <form class="contact-form-popup-price " id="contact-form-costing" action="https://api.web3forms.com/submit" method="POST" onsubmit="return submitFormCosting(event)">
+                  <input type="hidden" name="access_key" value="681ecd1d-e262-4f01-8b3c-3caa8812cd1f">
+              <input type="hidden" name="subject" id="subject-register-3" value="Cost Details Request From Aljada">
+      <div class="d-flex mb-3 flex-column">
+      <input type="text" name="Full name" id="fname-3" class="" placeholder="Full name*" required>
+      <span class="error-message" id="fname-error-3"></span>
+      </div>
+      <div class="d-flex mb-3 flex-column">
+          <input type="hidden" id="countryCode-popup" name="CountryCode" class="countrycode">
+      <input type="text" name="phone number" id="phone-3" class="phone-input" placeholder="Mobile number*" >
+      <span class="error-message" id="phone-error-3"></span>
+      </div>
+      <div class="d-flex flex-column mb-3">
+      <input type="text" name="email" id="email-3" class="" placeholder="Email*" >
+      <span class="error-message" id="email-error-3"></span>
+      </div>
+      <button type="submit" value="">REGISTER NOW</button>
+  </form>
+    </div>
+</div>
+
+<div class="popup" id="popup-main">
+    <button class="popup-close-button" id="close">&times;</button>
+    <div class="popup-content" id="popup-content-id">
+        <h3 class="text-light lap-register mb-3">Register Your Interest</h3>
+  <form class="contact-form-popup " id="contact-form" action="https://api.web3forms.com/submit" method="POST" onsubmit="return submitForm3(event)">
+                  <input type="hidden" name="access_key" value="681ecd1d-e262-4f01-8b3c-3caa8812cd1f">
+              <input type="hidden" name="subject" id="subject-register-3" value="Interest Request From Aljada">
+      <div class="d-flex mb-3 flex-column">
+      <input type="text" name="Full name" id="fname-3" class="" placeholder="Full name*" required>
+      <span class="error-message" id="fname-error-3"></span>
+      </div>
+      <div class="d-flex mb-3 flex-column">
+          <input type="hidden" id="countryCode" name="CountryCode" class="countrycode">
+      <input type="text" name="phone number" id="phone" class="phone-input" placeholder="Mobile number*" >
+      <span class="error-message" id="phone-error-3"></span>
+      </div>
+      <div class="d-flex flex-column mb-3">
+      <input type="text" name="email" id="email-3" class="" placeholder="Email*" >
+      <span class="error-message" id="email-error-3"></span>
+      </div>
+      <button type="submit" value="">ENQUIRE NOW</button>
+  </form>
+    </div>
+</div>
+<script>
+function submitFormCosting(event) {
+event.preventDefault();
+
+const form = document.getElementById('contact-form-costing');
+const formData = new FormData(form);
+
+fetch(form.action, {
+method: 'POST',
+body: formData
+})
+.then(response => {
+if (response.ok) {
+    alert("Thank you for your inquiry! Our team will contact you soon!");
+document.getElementById('popup-main-price').style.display = "none";
+} else {
+console.error('Form submission failed:', response.statusText);
+}
+})
+.catch(error => {
+console.error('Error:', error);
+});
+}
+function submitFormBrochure(event) {
+event.preventDefault();
+
+const form = document.getElementById('contact-form-brochure');
+const formData = new FormData(form);
+
+fetch(form.action, {
+method: 'POST',
+body: formData
+})
+.then(response => {
+if (response.ok) {
+    alert("Thank you for your inquiry! Our team will contact you soon!");
+document.getElementById('popup-main-brochure').style.display = "none";
+} else {
+console.error('Form submission failed:', response.statusText);
+}
+})
+.catch(error => {
+console.error('Error:', error);
+});
+}
+function submitFormvideo(event) {
+event.preventDefault();
+
+const form = document.getElementById('contact-form-video');
+const formData = new FormData(form);
+
+fetch(form.action, {
+method: 'POST',
+body: formData
+})
+.then(response => {
+if (response.ok) {
+    alert("Thank you for your inquiry! Our team will contact you soon!");
+document.getElementById('popup-main-video').style.display = "none";
+} else {
+console.error('Form submission failed:', response.statusText);
+}
+})
+.catch(error => {
+console.error('Error:', error);
+});
+}
+function submitFormPlan(event) {
+event.preventDefault();
+
+const form = document.getElementById('contact-form-plan');
+const formData = new FormData(form);
+
+fetch(form.action, {
+method: 'POST',
+body: formData
+})
+.then(response => {
+if (response.ok) {
+    alert("Thank you for your inquiry! Our team will contact you soon!");
+document.getElementById('popup-main-plan').style.display = "none";
+} else {
+console.error('Form submission failed:', response.statusText);
+}
+})
+.catch(error => {
+console.error('Error:', error);
+});
+}
+</script>
+<script>
+function submitFormMain(event) {
+    event.preventDefault();
+
+    const form = document.getElementById('contact-form-main');
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (response.ok) {
+            alert("Thank you for your inquiry! Our team will contact you soon!");
+            document.getElementById('contact-form-main').reset();
+        } else {
+            console.error('Form submission failed:', response.statusText);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+</script>
+<script>
+    document.querySelectorAll('.phone-input').forEach(function(input) {
+    const iti = window.intlTelInput(input, {
+        separateDialCode: true,
+        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/18.3.5/js/utils.js",
+        initialCountry: "ae"
+    });
+
+    input.addEventListener('input', function () {
+        const countryCodeInput = input.closest('form').querySelector('.countrycode');
+        const selectedCountryData = iti.getSelectedCountryData();
+        countryCodeInput.value = '+' + selectedCountryData.dialCode;
+    });
+});
+
+</script>
+<script>
+    function submitForm3(event) {
+    event.preventDefault();
+
+    const form = document.getElementById('contact-form');
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (response.ok) {
+            alert("Thank you for your inquiry! Our team will contact you soon!");
+            document.getElementById('popup-main').style.display ="none";
+        } else {
+            console.error('Form submission failed:', response.statusText);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+
+</script>
+<script>
+    window.addEventListener("load", function(){
+        setTimeout(function(){
+            document.querySelector(".popup").style.display = "block";
+        }, 5000); // 5 seconds delay
+    });
+
+    document.querySelector("#open-btn").addEventListener("click", function(){
+        document.querySelector(".popup").style.display = "block";
+    });
+
+    document.querySelector("#close").addEventListener("click", function(){
+        document.querySelector(".popup").style.display = "none";
+    });
+    document.querySelector("#closesecond").addEventListener("click", function(){
+    document.querySelector(".popup").style.display = "none";
+});
+</script>
+<script>
+
+    document.querySelector("#open-btn-bed").addEventListener("click", function(){
+        document.querySelector(".popup-bed").style.display = "block";
+    });
+
+    document.querySelector("#open-btn-bed-2").addEventListener("click", function(){
+        document.querySelector(".popup-bed").style.display = "block";
+    });
+
+    document.querySelector("#open-btn-bed-3").addEventListener("click", function(){
+        document.querySelector(".popup-bed").style.display = "block";
+    });
+
+    document.querySelector("#open-btn-bed-4").addEventListener("click", function(){
+        document.querySelector(".popup-bed").style.display = "block";
+    });
+
+    document.querySelector("#close-bed").addEventListener("click", function(){
+        document.querySelector(".popup-bed").style.display = "none";
+    });
+</script>
+<script>
+
+    document.querySelector("#open-btn-brochure").addEventListener("click", function(){
+        document.querySelector(".popup-brochure").style.display = "block";
+    });
+
+    document.querySelector("#close-brochure").addEventListener("click", function(){
+        document.querySelector(".popup-brochure").style.display = "none";
+    });
+</script>
+<script>
+
+    document.querySelector("#open-btn-video").addEventListener("click", function(){
+        document.querySelector(".popup-video").style.display = "block";
+    });
+
+    document.querySelector("#close-video").addEventListener("click", function(){
+        document.querySelector(".popup-video").style.display = "none";
+    });
+</script>
+<script>
+
+    document.querySelector("#open-btn-price").addEventListener("click", function(){
+        document.querySelector(".popup-price").style.display = "block";
+    });
+
+    document.querySelector("#open-btn-price-2").addEventListener("click", function(){
+        document.querySelector(".popup-price").style.display = "block";
+    });
+
+    document.querySelector("#open-btn-price-3").addEventListener("click", function(){
+        document.querySelector(".popup-price").style.display = "block";
+    });
+
+
+    document.querySelector("#close-price").addEventListener("click", function(){
+        document.querySelector(".popup-price").style.display = "none";
+    });
+</script>
+<script>
+    var btn = document.querySelector('.toggle');
+    var btnst = true;
+    var sidebar = document.getElementById('sidebar');
+    var links = sidebar.querySelectorAll('a');
+
+    btn.onclick = function() {
+      toggleSidebar();
+    };
+
+    links.forEach(function(link) {
+      link.onclick = function() {
+        if (!btnst) {
+          toggleSidebar();
+        }
+      };
+    });
+
+    function toggleSidebar() {
+      if(btnst) {
+        document.querySelector('.toggle i').classList.add('toggle');
+        sidebar.classList.add('sidebarshow');
+        btnst = false;
+      } else {
+        document.querySelector('.toggle i').classList.remove('toggle');
+        sidebar.classList.remove('sidebarshow');
+        btnst = true;
+      }
+    }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+</body>
+</html>

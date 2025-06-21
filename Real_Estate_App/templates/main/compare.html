@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% load static %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/18.3.5/css/intlTelInput.css" integrity="sha512-VXxcTT278CJV0mFYrCVNcWp8BckqU31nWRqrvRYtw8OB82j3mZb6WkmrCanFeO5xRlyw0lGV+U3Kym4+kMvmSg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+        .logo{
+            height:100px;
+            width:100px;
+        }
+  .form-select-input{
+    width:180px;
+    height:40px;
+    padding:10px;
+    background-color:black;
+    color:white;
+  }
+  .search-button{
+    width:150px;
+    height:40px;
+    background-color:#D7B56D;
+    color:white;
+    border:hidden;
+    outline:none;
+  }
+        td>img {
+            width: 350px;
+            height: 250px;
+            object-fit: cover;
+        }
+        .table-line-1{
+    background-color: #ffffff;
+}
+.table-line-2{
+    background-color: #F2F2F2;
+}
+.table-line-1 .table-line-2:hover{
+    background-color: bisque;
+}
+th{
+    font-weight: 500;
+}
+@media(min-width:320px) and (max-width:480px){
+           .logo{
+            margin-left:-30px;
+            margin-top:-30px;
+        }
+        .menu-button{
+            margin-top:-30px;
+            margin-right:-10px;
+        }
+           .form-select-input{
+        width:100%;
+    }
+    .search-button{
+        width:100%;
+    }
+    }
+
+    </style>
+<body>
+<div style="height:40px;background-color:#F8F8F8;"></div>
+<div class="container-fluid" style="background-color:#F8F8F8;">
+<form method="GET" action="{% url 'Filter_Search' %}">
+<div class="row justify-content-center">
+      <div class="col-md-2 col-12 mb-3">
+        <select class="form-select-input" name="developer" aria-label="Default select example">
+          <option value="" disabled selected>Developer</option>
+              {% for i in developer %}
+                <option value="{{ i.id }}">{{ i.name }}</option>
+              {% endfor %}
+        </select>
+      </div>
+      <div class="col-md-2 col-12 mb-3">
+        <select class="form-select-input" name="location" aria-label="Default select example">
+          <option value="" disabled selected>Location</option>
+              {% for i in location %}
+                <option value="{{ i.id }}">{{ i.city }}</option>
+              {% endfor %}
+        </select>
+      </div>
+      <div class="col-md-2 col-12 mb-3">
+        <select class="form-select-input" name="category" aria-label="Default select example">
+          <option value="" disabled selected>Category</option>
+            {% for i in property_category %}
+                <option value="{{ i.id }}">{{ i.name }}</option>
+            {% endfor %}
+        </select>
+      </div>
+      <!-- Add this inside the form in properties.html -->
+<div class="col-md-2 col-12 mb-3">
+    <select class="form-select-input" name="status" aria-label="Default select example">
+        <option value="" disabled selected>Type</option>
+        <option value="OFF PLAN">Off-Plan</option>
+        <option value="FOR SALE">Ready to Move</option>
+    </select>
+</div>
+<div class="col-md-2 col-12 mb-3">
+    <select class="form-select-input" name="sort_by" aria-label="Default select example">
+        <option value="" disabled selected>Sort by</option>
+        <option value="low_to_high">Low to High</option>
+        <option value="high_to_low">High to Low</option>
+        <option value="newest">Newest</option>
+        <option value="oldest">Oldest</option>
+    </select>
+</div>
+
+      <div class="col-md-2 col-12">
+        <button type="submit" class="search-button">Search</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+ <h5 class="display-5 my-5 text-center">Compare</h5>
+    <div class="container">
+        <div class="col-md-12 mx-auto">
+            <table class="table">
+                <tr>
+                    <th>Property Image</th>
+                    {% for property in properties %}
+                    <td><img src="{{ property.images.first.image.url }}" class="property-image" alt=""></td>
+                    {% endfor %}
+                </tr>
+
+                <tr class="table-line-1">
+                    <th>Price</th>
+                    {% for property in properties %}
+                    <td>{{ property.price }}</td>
+                    {% endfor %}
+                </tr>
+
+                <tr class="table-line-2">
+                    <th>Title</th>
+                    {% for property in properties %}
+                    <td>{{ property.title }}</td>
+                    {% endfor %}
+                </tr>
+
+
+                <tr class="table-line-2">
+                    <th>Location</th>
+                    {% for property in properties %}
+                    <td>{{ property.location }}</td>
+                    {% endfor %}
+                </tr>
+                <tr class="table-line-1">
+                    <th >Area</th>
+                    {% for property in properties %}
+                    <td>{{ property.area }}</td>
+                    {% endfor %}
+                </tr>
+                <tr class="table-line-1">
+                    <th >Developer</th>
+                    {% for property in properties %}
+                    <td>{{ property.developer }}</td>
+                    {% endfor %}
+                </tr>
+                <tr class="table-line-1">
+                    <th >Category</th>
+                    {% for property in properties %}
+                    <td>{{ property.category }}</td>
+                    {% endfor %}
+                </tr>
+                <tr class="table-line-1">
+                    <th >Bedrooms</th>
+                    {% for property in properties %}
+                    <td>{{ property.bedrooms }}</td>
+                    {% endfor %}
+                </tr>
+                <tr class="table-line-1">
+                    <th >Bathrooms</th>
+                    {% for property in properties %}
+                    <td>{{ property.bathrooms }}</td>
+                    {% endfor %}
+                </tr>
+            </table>
+
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js "></script>
+{% endblock %}
+</body>
+</html>

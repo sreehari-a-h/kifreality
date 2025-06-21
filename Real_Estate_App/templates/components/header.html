@@ -1,0 +1,101 @@
+{% load static %}
+
+<style>
+.nav-content-top{
+    height:35px;
+            width:100%;
+            background-color:black;
+            border-bottom:1px solid white;
+}
+ .nav-content-top-child{
+            height:30px;
+            width:25%;
+            background-color:black;
+        }
+         .nav-content-top-child-2{
+            height:30px;
+            width:10%;
+            background-color:black;
+        }
+        .callnumber{
+            font-size:12px;
+        }
+        .logo{
+            height:100px;
+            width:100px;
+        }
+    @media(min-width:320px) and (max-width:480px){
+        .nav-content-top{
+            height:30px;
+            width:100%;
+            background-color:black;
+        }
+        .nav-content-top-child{
+            height:30px;
+            width:13%;
+            background-color:black;
+        }
+        .nav-content-top-child-2{
+            height:30px;
+            width:30%;
+            background-color:black;
+        }
+        .callnumber{
+            display:none;
+        }
+        .logo{
+            margin-left:-15px;
+            margin-top:-10px;
+        }
+        .menu-button{
+            margin-top:-10px;
+            margin-right:-10px;
+        }
+    }
+</style>
+<header class="">
+    {% comment %} <div class="d-flex flex-row justify-content-between nav-content-top">
+        <div class="d-flex flex-row justify-content-evenly align-items-center nav-content-top-child">
+            <a href="tel:+971507072099"><i class="fa-solid fa-phone" style="font-size:15px;color:white;"></i></a><span class="text-light callnumber">+971 55 333 4444</span>
+            <a href="mailto:info@luxuryacresuae.com"><i class="fa-solid fa-envelope" style="font-size:15px;color:white;"></i></a><span class="text-light callnumber">info@kifproperties.com</span>
+        </div>
+    <div class="d-flex flex-row justify-content-evenly align-items-center nav-content-top-child-2">
+        <a href="https://www.facebook.com/profile.php?id=61554617438831&mibextid=LQQJ4d" class="text-light"><i class="fa-brands fa-square-facebook" style="font-size:15px"></i></a>
+                      <a href="https://wa.me/971507072099" class="text-light"><i class="fa-brands fa-square-whatsapp" style="font-size:15px"></i></a>
+              <a href="https://www.instagram.com/luxuryacresdxb?igsh=Nnp1eHB2ZjI4eDhv" class="text-light"><i class="fa-brands fa-square-instagram" style="font-size:15px"></i></a>
+              <a href="" class="text-light"><i class="fa-brands fa-linkedin" style="font-size:15px"></i></a>
+              </div>
+              </div> {% endcomment %}
+<nav class="navbar navbar-expand-lg navbar-light " style="background-image:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));height:60px;width:100%;">
+  <div class="container" style="width:100%;display:flex;align-items:center;justify-content:space-between;">
+    <a class="navbar-brand col-md-6" href="{% url 'home' %}"><img src="{% static 'img/logo-kif.png' %}" class="logo"></a>
+<button class="navbar-toggler menu-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarNav" aria-controls="navbarNav">
+<i class="fa-solid fa-bars" style="color:white;"></i>
+            </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav w-100 d-flex justify-content-between">
+        <a class="nav-link active fw-bold" style="color: #D7B56D;" aria-current="page" href="{% url 'home' %}">HOME</a>
+        <a class="nav-link fw-bold" style="color: #D7B56D;" href="{% url 'properties' %}">PROPERTIES</a>
+        <a class="nav-link fw-bold" style="color: #D7B56D;" href="{% url 'about' %}">ABOUT US</a>
+        <a class="nav-link fw-bold" style="color: #D7B56D;" href="{% url 'contact' %}">CONTACT US</a>
+      </div>
+    </div>
+  </div>
+  <div class="offcanvas offcanvas-start d-block d-sm-none" tabindex="-5" id="navbarNav" aria-labelledby="navbarNavLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="navbarNavLabel">KIF REALTY</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <div class="navbar-nav">
+                        <a class="nav-link active fw-bold" style="color: #D7B56D;" aria-current="page" href="{% url 'home' %}">Home</a>
+                        <a class="nav-link fw-bold" style="color: #D7B56D;" href="{% url 'properties' %}">Properties</a>
+                        <a class="nav-link fw-bold" style="color: #D7B56D;" href="{% url 'about' %}">About us</a>
+                        <a class="nav-link fw-bold" style="color: #D7B56D;" href="{% url 'contact' %}">Contact us</a>
+                    </div>
+                </div>
+            </div>
+</nav>
+
+
+    </header>
