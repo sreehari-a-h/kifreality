@@ -1,9 +1,13 @@
-# Ignore everything by default
+# Ignore everything
 *
 
-# But allow these for the first push
+# Already pushed
+!.gitignore
 !manage.py
 !mysite/
-!.gitignore
 !Real_Estate_App/
+!static/
+
+# Next push
+!zip_code.py
 
