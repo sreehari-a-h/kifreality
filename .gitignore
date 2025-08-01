@@ -6,4 +6,10 @@ venv/
 
 # Django stuff:
 *.sqlite3
+*.zip
 
+media/
+static/
+
+migrations/
+zip_code.py
