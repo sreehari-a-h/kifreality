@@ -6,11 +6,12 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('base', views.BASE, name='base'),
-    path('', views.HOME, name='home'),
-    path('home2', views.HOME2, name='home2'),
+    path('', views.HOME2, name='home2'),
     path('about', views.ABOUT, name='about'),
     path('privacy', views.PRIVACY, name='privacy'),
     path('contact', views.CONTACT, name='contact'),
+    path('propertydetail', views.propertydetail, name='propertydetail'),
+    path('burjazizi-landing', views.burjazizi, name='burjazizi-landing'),
     path('aljada', views.aljada, name='aljada'),
     path('properties', views.PROPERTIES, name='properties'),
     path('singlepage/<int:pk>', views.SINGLEPAGE, name='singlepage'),

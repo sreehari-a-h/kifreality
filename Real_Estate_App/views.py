@@ -8,8 +8,8 @@ from django.http import HttpResponse
 def BASE(request):
     return render(request, 'base.html')
 
-def HOME(request):
-    return render(request, 'main/home.html')
+# def HOME(request):
+#     return render(request, 'main/home.html')
 
 def ABOUT(request):
     return render(request, 'main/about.html')
@@ -22,6 +22,10 @@ def PRIVACY(request):
 
 def aljada(request):
     return render(request, 'main/aljada.html')
+def propertydetail(request):
+    return render(request, 'main/propertydetail.html')
+def burjazizi(request):
+    return render(request, 'main/burjazizilanding.html')
 
 def COMING(request):
     return render(request, 'main/coming.html')
