@@ -1,16 +1,8 @@
-# Byte-compiled / cache files
-__pycache__/
+# Ignore everything by default
+*
 
-# Virtual environments
-venv/
+# But allow these for the first push
+!manage.py
+!mysite/
+!.gitignore
 
-# Django stuff:
-*.sqlite3
-*.zip
-
-media/
-static/
-
-migrations/
-zip_code.py
-Real_Estate_App/
