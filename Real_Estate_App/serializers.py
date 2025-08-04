@@ -8,17 +8,17 @@ class PropertiesSerializer(serializers.Serializer):
     price = serializers.DecimalField(max_digits=10, decimal_places=2)
 
 from rest_framework import serializers
-from .models import PropertyCategory, Location, Developer, Property, PropertyImage, PropertiesExample
+from .models import PropertyCategory, Developer, Property, PropertyImage
 
 class PropertyCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = PropertyCategory
         fields = '__all__'
 
-class LocationSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Location
-        fields = '__all__'
+# class LocationSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Location
+#         fields = '__all__'
 
 class DeveloperSerializer(serializers.ModelSerializer):
     class Meta:
@@ -41,7 +41,7 @@ class PropertiesExampleSerializer(serializers.ModelSerializer):
     image_url = serializers.SerializerMethodField()
 
     class Meta:
-        model = PropertiesExample
+        model = Property
         fields = ['status', 'category', 'property_type', 'title', 'description', 'price', 'bedrooms', 'bathrooms', 'area', 'location', 'developer', 'created_at', 'image', 'brochure', 'image_url']
 
     def get_image_url(self, obj):

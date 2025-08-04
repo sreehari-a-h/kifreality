@@ -1296,7 +1296,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="col-md-4 mb-3">
         <a href="{% url 'singlepage' pk=property_item.pk %}" class="text-decoration-none">
           <div class="card-item">
-            <img src="{% if property_item.images.all %}{{ property_item.images.first.image.url }}{% else %}https://dubaiproperties.org.in/wp-content/uploads/2015/12/image035.jpg-e1449897855909.jpg{% endif %}" class="item-card-image" alt="Property Image">
+            <img 
+                src="{% if property_item.images.first %}{{ property_item.images.first.image }}{% else %}https://dubaiproperties.org.in/wp-content/uploads/2015/12/image035.jpg{% endif %}"
+
+            class="item-card-image" alt="Property Image">
             <div class="overlay-content">
               <div class="overlay-content-top">
                 <button>FEATURED</button>
@@ -1304,14 +1307,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <div class="overlay-content-bottom">
                 <!--<button class="status-button">{{ property_item.status }}</button>-->
                 <h5 class="text-light">{{ property_item.title }}</h5>
-                <span class="mb-2 text-light price-span">Starting from <b>AED {{ property_item.price }}</b></span>
+                <span class="mb-2 text-light price-span">Starting from <b>AED {{ property_item.low_price }}</b></span>
                 </a>
                 <div class="counts-plus-preview">
                 <div class="content-counts">
                   <i class="fa-solid fa-bed"></i>
-                  <span class="text-light">{{ property_item.bedrooms }}</span>
-                  <i class="fa-solid fa-bath"></i>
-                  <span class="text-light">{{ property_item.bathrooms }}</span>
+                  <span>
+                      {% if property_item.room_counts %}
+                      {% for room in property_item.room_counts %}
+                      {{ room }}{% if not forloop.last %}, {% endif %}
+                      {% endfor %}
+                      rooms
+                      {% else %}
+                      No bedrooms info
+                      {% endif %}
+                    </span>
                   </div>
 <!-- Button to trigger individual modals -->
 <div class="preview-plus-download">
@@ -1390,7 +1400,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="carousel-inner">
             {% for image in property_item.images.all %}
               <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                <img src="{{ image.image.url }}" class="preview-large-photo" alt="">
+                <img src="{{ image.image }}" class="preview-large-photo" alt="">
               </div>
             {% endfor %}
           </div>
@@ -1584,9 +1594,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <img class="house-picture" src="{{ property.images.first.image.url }}" alt=""/>
                 <div class="details">
                     <div class='dts'>
-                        <h1>AED {{ property.price }}</h1>
+                        <h1>AED {{ property.low_price }}</h1>
                         <span class="property-title-span">{{ property.title }}</span>
-                        <h5>{{ property.location.city }}, UAE</h5>
+                        <h5>{{ property.city }}, UAE</h5>
                         <div class="bed">
                             <i class="fa-solid fa-bed house-icons"></i>
                             <span class="mr-3">{{ property.bedrooms }}</span>

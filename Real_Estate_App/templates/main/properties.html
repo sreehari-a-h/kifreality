@@ -4,1248 +4,1420 @@
 {% block title %}Home{% endblock %}
 {% load static %}
 {% block content %}
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'style.css' %}">
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/18.3.5/css/intlTelInput.css" integrity="sha512-VXxcTT278CJV0mFYrCVNcWp8BckqU31nWRqrvRYtw8OB82j3mZb6WkmrCanFeO5xRlyw0lGV+U3Kym4+kMvmSg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/18.3.5/css/intlTelInput.css"
+    integrity="sha512-VXxcTT278CJV0mFYrCVNcWp8BckqU31nWRqrvRYtw8OB82j3mZb6WkmrCanFeO5xRlyw0lGV+U3Kym4+kMvmSg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <style>
-.logo{
-            height:100px;
-            width:100px;
-        }
-@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
-.fixed-social-medias{
+  .logo {
+    height: 100px;
+    width: 100px;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+
+  .fixed-social-medias {
     position: fixed;
     display: flex;
-    left:10px;
-    bottom:10px;
+    left: 10px;
+    bottom: 10px;
     align-items: center;
     justify-content: space-evenly;
     flex-direction: row;
     height: 50px;
     width: 320px;
-    z-index:3;
- }
- .fixed-social-medias img{
+    z-index: 3;
+  }
+
+  .fixed-social-medias img {
     height: 50px;
     width: 50px;
- }
+  }
+
   .popup {
-  display: none;
-  position: absolute;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  padding: 10px;
-  z-index: 1;
-  left:50px;
-  bottom:50px;
-  width:250px;
-  height:100px;
-  background-color: #2DB742;
-  border-radius:5px;
-}
-#whatsapp-icon{
-    position:absolute;
-    left:0;
-    height:50px;
-    width:50px;
-    bottom:0;
-    cursor:pointer;
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    z-index: 1;
+    left: 50px;
+    bottom: 50px;
+    width: 250px;
+    height: 100px;
+    background-color: #2DB742;
+    border-radius: 5px;
+  }
 
-}
-.chat-content{
-    width:100%;
-    height:100%;
-    display:flex;
-    align-items:center;
-    justify-content:space-evenly;
-    flex-direction:column;
-}
-.chat-content a{
-    color:white;
-    text-decoration:none;
-    font-size:10px;
-}
-.chat-content-2{
-    display:flex;
-    width:100%;
-    align-items:center;
-    justify-content:space-evenly;
-    flex-direction:row;
-}
-.whatsapp-icon-2{
-    width:20px;
-    height:20px;
+  #whatsapp-icon {
+    position: absolute;
+    left: 0;
+    height: 50px;
+    width: 50px;
+    bottom: 0;
+    cursor: pointer;
 
-}
-.chat-span{
-    color:white;
-}
-.need-help{
-  width:200px;
-  height:50px;
-  display:flex;
-  align-items:center;
-  flex-direction:column;
-  justify-content:space-evenly;
-  border-radius:5px;
-  background-color:white;
+  }
 
-}
-.need-help span{
-  font-size:12px;
-}
-.contact-card {
-  height: 300px;
-  background-color: white;
-  width: 90%;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items:center;
-  justify-content: space-evenly;
-  border-radius: 5px;
-  padding: 10px;
-  box-shadow: 0 0 1px rgb(223, 223, 223);
-
-}
-.office-details span{
-    font-size:15px;
-}
-
-.office-details{
-  width: 80%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  height: 100px;
-}
-.office-details img{
-  width: 20px;
-  height: 20px;
-  margin-right:20px;
-}
-.contact-details img{
-  width: 20px;
-  height: 20px;
-  margin-right:20px;
-}
-.mail-details img{
-  width: 20px;
-  height: 20px;
-  margin-right:20px;
-}
-.icons{
-  width: 20px;
-  height: 20px;
-}
-.contact-details{
-  width: 80%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  height: 30px;
-}
-.mail-details{
-  width: 80%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  height: 30px;
-}
-.contact-card span{
-  color: rgb(188, 136, 4);
-}
-.social-links-card{
-  height: 150px;
-  background-color: white;
-  width: 90%;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  border-radius: 5px;
-  padding: 10px;
-  box-shadow: 0 0 1px rgb(223, 223, 223);
-
-}
-.social-links-icons{
-  width: 90%;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  flex-direction: row;
-  height: 60px;
-}
-.social-links-icons i{
-  font-size:35px;
-}
-.social-links-icons i:hover{
-  transform: scale(1.3);
-  transition: 0.6s;
-  color: #D7B56D;
-}
-.fixed-card{
-  position: sticky;
-  height: 100vh;
-  overflow-y: auto;
-  top: 0;
-}
-.bed-bath-count{
-    width:50%;
-}
-.card-item{
-  width:100%;
-  position: relative;
-  height: 500px;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  display: inline-block; /* Ensures the overlay-content div respects the size of the image */
-}
-
-.item-card-image {
-  width: 100%; /* Make sure the image takes the full width of the card */
-  height: 300px; /* Maintain the image's aspect ratio */
-  object-fit: cover;
-}
-
-.overlay-content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 300px;
-  display: flex;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 20%, transparent 45%);
-  flex-direction: column;
-  justify-content:space-between;
-  align-items: center;
-  color: white;
-}
-.status-button{
-  width: 65px;
-  height: 25px;
-  background-color: #000000;
-  color: white;
-  border-radius: 2px;
-  border: hidden;
-  outline: none;
-  font-size: 10px;
-  font-weight: 600;
-}
-.featured-button{
-    width: 65px;
-  height: 25px;
-  background-color: #D7B56D;
-  color: white;
-  border-radius: 2px;
-  border: hidden;
-  outline: none;
-  font-size: 10px;
-  font-weight: 600;
-}
-.overlay-content-top{
-  width: 90%;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: row;
-
-}
-.overlay-content-top i{
-  font-size: 20px;
-}
-.overlay-content-bottom{
-  width: 90%;
-  height: 40px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-.overlay-content-bottom i{
-  color:white;
-  font-size: 18px;
-  z-index:10;
-}
-.content-bottom-last{
-  width: 100%;
-  height:35px;
-  display: flex;
-  align-items: flex-start;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
-.details-button{
-  width: 20%;
-  height:35px;
-  display: flex;
-  align-items: flex-end;
-  justify-content:flex-end;
-}
-.content-counts{
-  width: 100%;
-  height:30px;
-  display: flex;
-  align-items: flex-start;
-  flex-direction: row;
-  justify-content: flex-start;
-}
-.content-counts i{
-  color: black;
-  margin-right:8px;
-}
-.content-counts span{
-    margin-right:8px;
-    letter-spacing:2px;
-  color: black;
-}
-.overlay-content-bottom button{
-  width: 60px;
-  border: hidden;
-  outline: none;
-  background-color: black;
-  color: white;
-  font-size: 10px;
-  height: 30px;
-  font-weight: 600;
-  border-radius: 2px;
-}
-.overlay-content-bottom span{
-  font-size: 20px;
-}
-.card-content-bottom{
-  width: 90%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-evenly;
-  height: 200px;
-  margin: auto;
-  flex-direction: column;
-}
-.card-content-bottom h5{
-  font-size: 16px;
-  color: black;
-}
-.details-button button{
-  width: 80px;
-  border: hidden;
-  outline: none;
-  background-color:#D7B56D;
-  color: rgb(255, 255, 255);
-  font-size: 14px;
-  height: 30px;
-  font-weight: 500;
-}
-
-.added-item{
-    width:100px;
-    height:70px;
-}
-.toast-message{
-    width:450px;
-}
-#toastBody{
-  width:100%;
-  flex:wrap;
-  display:flex;
-  justify-content:space-evenly;
-}
-
-.apartment-text{
-  color: black;
-  font-size: 12px;
-}
-.card-item:hover .overlay-content{
-  background: none;
-  transition: 0.5s;
-}
-.modal-header i{
-    font-size:25px;
-    color:white;
-}
-.preview-body{
-    width:100%;
-    height:100%;
-    background-color:black;
-      display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.preview-image-container{
-    width:100%;
-    height:100%;
+  .chat-content {
+    width: 100%;
+    height: 100%;
     display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+  }
 
-.preview-images{
-       width:65%;
-    height:100%;
-      display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.preview-details{
-       width:30%;
-    height:100%;
-      display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
-.preview-image-single{
-    width:100%;
-    overflow:hidden;
-    height:100%;
-    object-fit:cover;
+  .chat-content a {
+    color: white;
+    text-decoration: none;
+    font-size: 10px;
+  }
 
-}
-.preview-price{
-    width:100%;
-    height:45px;
-      display: flex;
-  align-items:center;
-  justify-content:flex-start;
-  border-bottom:1px solid #e8e8e8;
-}
-.preview-description{
-        width:100%;
-    height:70px;
-      display: flex;
-  align-items:center;
-  justify-content:flex-start;
-  border-bottom:1px solid #e8e8e8;
-}
-.preview-description span{
-    font-size:14px;
-}
-.preview-details-button{
-      width: 100%;
-  height:50px;
-  display: flex;
-  align-items: center;
-  justify-content:center;
+  .chat-content-2 {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+  }
 
-}
-.preview-details-button button{
-     width: 95%;
-  border: hidden;
-  outline: none;
-  background-color:#D7B56D;
-  color: rgb(255, 255, 255);
-  font-size: 15px;
-  height: 38px;
-  font-weight: 500;
-}
-.preview-title{
-          width:100%;
-    height:50px;
-      display: flex;
-  align-items:center;
-  justify-content:flex-start;
-  border-bottom:1px solid #e8e8e8;
-}
-.preview-title h5{
-    font-size:18px;
-}
-.preview-counts{
-      width: 50%;
-  height:30px;
-  display: flex;
-  align-items: flex-start;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
-.preview-counts i{
-  color: black;
-}
-.preview-counts span{
-  color: black;
-  font-size:14px;
-}
-.preview-status-button{
-      width: 70px;
-  height: 25px;
-  background-color: #000000;
-  color: white;
-  border-radius: 2px;
-  border: hidden;
-  outline: none;
-  font-size: 10px;
-  font-weight: 600;
-}
-.modal-logo{
-    width:45px;
-    height:40px;
-}
-.carousel-control-prev,
-.carousel-control-next {
+  .whatsapp-icon-2 {
+    width: 20px;
+    height: 20px;
+
+  }
+
+  .chat-span {
+    color: white;
+  }
+
+  .need-help {
+    width: 200px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-radius: 5px;
+    background-color: white;
+
+  }
+
+  .need-help span {
+    font-size: 12px;
+  }
+
+  .contact-card {
+    height: 300px;
+    background-color: white;
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 1px rgb(223, 223, 223);
+
+  }
+
+  .office-details span {
+    font-size: 15px;
+  }
+
+  .office-details {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100px;
+  }
+
+  .office-details img {
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
+  }
+
+  .contact-details img {
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
+  }
+
+  .mail-details img {
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
+  }
+
+  .icons {
+    width: 20px;
+    height: 20px;
+  }
+
+  .contact-details {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    height: 30px;
+  }
+
+  .mail-details {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    height: 30px;
+  }
+
+  .contact-card span {
+    color: rgb(188, 136, 4);
+  }
+
+  .social-links-card {
+    height: 150px;
+    background-color: white;
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 1px rgb(223, 223, 223);
+
+  }
+
+  .social-links-icons {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+    height: 60px;
+  }
+
+  .social-links-icons i {
+    font-size: 35px;
+  }
+
+  .social-links-icons i:hover {
+    transform: scale(1.3);
+    transition: 0.6s;
+    color: #D7B56D;
+  }
+
+  .fixed-card {
+    position: sticky;
+    height: 100vh;
+    overflow-y: auto;
+    top: 0;
+  }
+
+  .bed-bath-count {
+    width: 50%;
+  }
+
+  .card-item {
+    width: 100%;
+    position: relative;
+    height: 500px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    display: inline-block;
+    /* Ensures the overlay-content div respects the size of the image */
+  }
+
+  .item-card-image {
+    width: 100%;
+    /* Make sure the image takes the full width of the card */
+    height: 300px;
+    /* Maintain the image's aspect ratio */
+    object-fit: cover;
+  }
+
+  .overlay-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    display: flex;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 20%, transparent 45%);
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+  }
+
+  .status-button {
+    width: 65px;
+    height: 25px;
+    background-color: #000000;
+    color: white;
+    border-radius: 10px;
+    border: hidden;
+    outline: none;
+    font-size: 10px;
+    font-weight: 600;
+  }
+
+  .featured-button {
+    width: 65px;
+    height: 25px;
+    background-color: #D7B56D;
+    color: white;
+    border-radius: 10px;
+    border: hidden;
+    outline: none;
+    font-size: 10px;
+    font-weight: 600;
+  }
+
+  .overlay-content-top {
+    width: 90%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+
+  }
+
+  .overlay-content-top i {
+    font-size: 20px;
+  }
+
+  .overlay-content-bottom {
+    width: 90%;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .overlay-content-bottom i {
+    color: white;
+    font-size: 18px;
+    z-index: 10;
+  }
+
+  .content-bottom-last {
+    width: 100%;
+    height: 35px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .details-button {
+    width: 20%;
+    height: 35px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+
+  .content-counts {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .content-counts i {
+    color: black;
+    margin-right: 8px;
+  }
+
+  .content-counts span {
+    margin-right: 8px;
+    /* letter-spacing: 2px; */
+    color: black;
+  }
+
+  .overlay-content-bottom button {
+    width: 60px;
+    border: hidden;
+    outline: none;
+    background-color: black;
+    color: white;
+    font-size: 10px;
+    height: 30px;
+    font-weight: 600;
+    border-radius: 2px;
+  }
+
+  .overlay-content-bottom span {
+    font-size: 20px;
+  }
+
+  .card-content-bottom {
+    width: 90%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    height: 200px;
+    margin: auto;
+    flex-direction: column;
+  }
+
+  .card-content-bottom h5 {
+    font-size: 16px;
+    color: black;
+  }
+
+  .details-button button {
+    width: 80px;
+    border: hidden;
+    outline: none;
+    background-color: #D7B56D;
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    height: 30px;
+    font-weight: 500;
+  }
+
+  .added-item {
+    width: 100px;
+    height: 70px;
+  }
+
+  .toast-message {
+    width: 450px;
+  }
+
+  #toastBody {
+    width: 100%;
+    flex: wrap;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .apartment-text {
+    color: black;
+    font-size: 12px;
+  }
+
+  .card-item:hover .overlay-content {
+    background: none;
+    transition: 0.5s;
+  }
+
+  .modal-header i {
+    font-size: 25px;
+    color: white;
+  }
+
+  .preview-body {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .preview-image-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .preview-images {
+    width: 65%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .preview-details {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  .preview-image-single {
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+    object-fit: cover;
+
+  }
+
+  .preview-price {
+    width: 100%;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-bottom: 1px solid #e8e8e8;
+  }
+
+  .preview-description {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-bottom: 1px solid #e8e8e8;
+  }
+
+  .preview-description span {
+    font-size: 14px;
+  }
+
+  .preview-details-button {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .preview-details-button button {
+    width: 95%;
+    border: hidden;
+    outline: none;
+    background-color: #D7B56D;
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+    height: 38px;
+    font-weight: 500;
+  }
+
+  .preview-title {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-bottom: 1px solid #e8e8e8;
+  }
+
+  .preview-title h5 {
+    font-size: 18px;
+  }
+
+  .preview-counts {
+    width: 50%;
+    height: 30px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .preview-counts i {
+    color: black;
+  }
+
+  .preview-counts span {
+    color: black;
+    font-size: 14px;
+  }
+
+  .preview-status-button {
+    width: 70px;
+    height: 25px;
+    background-color: #000000;
+    color: white;
+    border-radius: 2px;
+    border: hidden;
+    outline: none;
+    font-size: 10px;
+    font-weight: 600;
+  }
+
+  .modal-logo {
+    width: 45px;
+    height: 40px;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
     top: 50%;
     transform: translateY(-50%);
-}
+  }
 
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
     width: 30px;
     height: 30px;
-}
-.luxury-acres{
+  }
+
+  .luxury-acres {
     font-family: 'Lora', serif;
-}
-.free-space-div{
-    background-color:#F8F8F8;
-    height:40px;
-}
-.preview-plus-download{
-    width:25%;
-    display:flex;
-    align-items:center;
-    flex-direction:row;
-    justify-content:space-between;
-}
-.compare-icon{
-    border:hidden;
-    outline:none;
-}
-.compare-icon i{
-    font-size:21px;
-    color:white;
-}
-.modal-open-button{
-    border:hidden;
-    outline:none;
-}
-.modal-open-button i{
-    color:white;
-    font-size:20px;
-}
-.price-and-download{
+  }
+
+  .free-space-div {
+    background-color: #F8F8F8;
+    height: 40px;
+  }
+
+  .preview-plus-download {
+    width: 25%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .compare-icon {
+    border: hidden;
+    outline: none;
+  }
+
+  .compare-icon i {
+    font-size: 21px;
+    color: white;
+  }
+
+  .modal-open-button {
+    border: hidden;
+    outline: none;
+  }
+
+  .modal-open-button i {
+    color: white;
+    font-size: 20px;
+  }
+
+  .price-and-download {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     width: 100%;
   }
-  .price-and-download i{
+
+  .price-and-download i {
     font-size: 20px;
   }
-  .modal-open-button{
+
+  .modal-open-button {
     border: hidden;
     outline: none;
     background: transparent;
   }
-  .modal-open-button i{
-      font-size:17px;
-      color:white;
+
+  .modal-open-button i {
+    font-size: 17px;
+    color: white;
   }
-  .error-message{
+
+  .error-message {
     font-size: 12px;
-    color:rgb(154, 0, 0);
+    color: rgb(154, 0, 0);
   }
-  .form-inputs{
+
+  .form-inputs {
     border: 1px solid rgb(202, 202, 202);
     height: 40px;
     outline: none;
     padding: 10px;
     width: 300px;
   }
-  .submit-button-download{
+
+  .submit-button-download {
     background-color: black;
     height: 40px;
     width: 200px;
     border: hidden;
     color: white;
   }
-  #download-button{
-    background-color:#D7B56D;
+
+  #download-button {
+    background-color: #D7B56D;
     color: white;
     width: 200px;
     height: 35px;
     text-transform: uppercase;
     border: hidden;
     outline: none;
-    letter-spacing:1px;
+    letter-spacing: 1px;
     font-size: 12px;
     font-weight: 600;
   }
-  #download-container{
+
+  #download-container {
     width: 300px;
     height: 60px;
     display: flex;
-    margin:auto;
+    margin: auto;
     align-items: center;
     justify-content: center;
   }
-   .body-of-modal-2{
+
+  .body-of-modal-2 {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     flex-direction: column;
   }
-  .download-container-2{
-       display: flex;
-    width:100%;
-    height:100%;
+
+  .download-container-2 {
+    display: flex;
+    width: 100%;
+    height: 100%;
     align-items: center;
-    flex-direction:column;
+    flex-direction: column;
     justify-content: space-evenly;
   }
-  .submit-button-container{
-             display: flex;
-    width:300px;
-    height:50px;
+
+  .submit-button-container {
+    display: flex;
+    width: 300px;
+    height: 50px;
     align-items: center;
     justify-content: center;
   }
-  .download-container-2 span{
-      color:green;
-      font-size:13px;
+
+  .download-container-2 span {
+    color: green;
+    font-size: 13px;
   }
-  .form-select-input{
-    width:180px;
-    height:40px;
-    padding:10px;
-    background-color:black;
-    color:white;
+
+  .form-select-input {
+    width: 180px;
+    height: 40px;
+    padding: 10px;
+    background-color: black;
+    color: white;
   }
-  .search-button{
-    width:150px;
-    height:40px;
-    background-color:#D7B56D;
-    color:white;
-    border:hidden;
-    outline:none;
+
+  .search-button {
+    width: 150px;
+    height: 40px;
+    background-color: #D7B56D;
+    color: white;
+    border: hidden;
+    outline: none;
   }
-.preview-large-photo{
-    height:100vh !important;
-    width:100% !important;
-    object-fit:cover !important;
-}
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
+
+  .preview-large-photo {
+    height: 100vh !important;
+    width: 100% !important;
+    object-fit: cover !important;
+  }
+
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
     background-color: transparent;
-    border-radius: 50%; /* Make the icons circular */
-}
-@media(min-width:320px) and (max-width:480px){
-       .form-select-input{
-        width:100%;
+    border-radius: 50%;
+    /* Make the icons circular */
+  }
+
+  @media(min-width:320px) and (max-width:480px) {
+    .form-select-input {
+      width: 100%;
     }
-    .search-button{
-        width:100%;
+
+    .search-button {
+      width: 100%;
     }
-    .contact-details{
-        width:90%;
+
+    .contact-details {
+      width: 90%;
     }
-    .office-details{
-        width:90%;
+
+    .office-details {
+      width: 90%;
     }
-    .free-space-div{
-    background-color:#F8F8F8;
-    height:20px;
-}
-    .mail-details{
-        width:90%;
+
+    .free-space-div {
+      background-color: #F8F8F8;
+      height: 20px;
     }
-    .bed-bath-count{
-        width:65%;
+
+    .mail-details {
+      width: 90%;
     }
-    .card-item{
-        height:520px;
+
+    .bed-bath-count {
+      width: 65%;
     }
-    .card-content-bottom{
-        height:250px;
+
+    .card-item {
+      height: 520px;
     }
-    .preview-details{
-        display:none;
+
+    .card-content-bottom {
+      height: 250px;
     }
-    .preview-images{
-        width:100%;
-        height:50%;
+
+    .preview-details {
+      display: none;
     }
+
+    .preview-images {
+      width: 100%;
+      height: 50%;
+    }
+
     .item-card-image {
-  width: 100%; /* Make sure the image takes the full width of the card */
-  height: 270px; /* Maintain the image's aspect ratio */
-  object-fit: cover;
-}
-.overlay-content{
-    height:270px;
-}
-.preview-image-container{
-    width:100%;
-    height:50%;
-    display:flex;
-    align-items:center;
-}
-.preview-image-container img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-.luxury-acres{
-    font-size:12px;
-    font-family: 'Lora', serif;
-}
-.preview-body{
-    width:100%;
-    height:80vh;
-    background-color:black;
+      width: 100%;
+      /* Make sure the image takes the full width of the card */
+      height: 270px;
+      /* Maintain the image's aspect ratio */
+      object-fit: cover;
+    }
+
+    .overlay-content {
+      height: 270px;
+    }
+
+    .preview-image-container {
+      width: 100%;
+      height: 50%;
       display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.modal-logo{
-    width:25px;
-    height:25px;
-}
-.preview-image-slider{
-    width:350px;
-    height:400px;
-}
-.preview-large-photo{
-    height:60vh !important;
-    width:100% !important;
-    object-fit:cover !important;
-}
-.logo{
-    margin-left:-30px;
-    margin-top:-30px;
-}
-.menu-button{
-    margin-top:-30px;
-    margin-right:-10px;
-}
-}
-@media(min-width:481px) and (max-width:820px){
-    .item-card-image{
-        height:200px;
+      align-items: center;
     }
-    .overlay-content{
-        height:200px;
+
+    .preview-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
-     .card-content-bottom{
-         display:flex;
-        justify-content:space-between;
+
+    .luxury-acres {
+      font-size: 12px;
+      font-family: 'Lora', serif;
     }
-    .content-bottom-last{
-        height:70px;
-        flex-direction:column;
-        justify-content:flex-start;
-        align-items:flex-start;
+
+    .preview-body {
+      width: 100%;
+      height: 80vh;
+      background-color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .details-button{
-  width: 35%;
-  height:35px;
-  display: flex;
-  align-items:center;
-  justify-content:center;
-}
-.contact-card{
-    width:100%;
-    height:400px;
-}
-.office-details{
-    width:95%;
-}
-.contact-details{
-    width:95%;
-}
-.mail-details{
-    width:95%;
-    overflow:hidden;
-}
-.social-links-card{
-    width:100%;
-}
-.preview-large-photo{
-    height:80vh !important;
-    width:100% !important;
-    object-fit:cover !important;
-}
-}
-@media(min-width:821px) and (max-width:1024px){
-      .item-card-image{
-        height:250px;
+
+    .modal-logo {
+      width: 25px;
+      height: 25px;
     }
-    .overlay-content{
-        height:250px;
+
+    .preview-image-slider {
+      width: 350px;
+      height: 400px;
     }
-}
+
+    .preview-large-photo {
+      height: 60vh !important;
+      width: 100% !important;
+      object-fit: cover !important;
+    }
+
+    .logo {
+      margin-left: -30px;
+      margin-top: -30px;
+    }
+
+    .menu-button {
+      margin-top: -30px;
+      margin-right: -10px;
+    }
+  }
+
+  @media(min-width:481px) and (max-width:820px) {
+    .item-card-image {
+      height: 200px;
+    }
+
+    .overlay-content {
+      height: 200px;
+    }
+
+    .card-content-bottom {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .content-bottom-last {
+      height: 70px;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+
+    .details-button {
+      width: 35%;
+      height: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .contact-card {
+      width: 100%;
+      height: 400px;
+    }
+
+    .office-details {
+      width: 95%;
+    }
+
+    .contact-details {
+      width: 95%;
+    }
+
+    .mail-details {
+      width: 95%;
+      overflow: hidden;
+    }
+
+    .social-links-card {
+      width: 100%;
+    }
+
+    .preview-large-photo {
+      height: 80vh !important;
+      width: 100% !important;
+      object-fit: cover !important;
+    }
+  }
+
+  @media(min-width:821px) and (max-width:1024px) {
+    .item-card-image {
+      height: 250px;
+    }
+
+    .overlay-content {
+      height: 250px;
+    }
+  }
 </style>
+
 <body>
 
-<!-- properties.html -->
-<div style="height:40px;background-color:#F8F8F8;"></div>
-<div class="container-fluid" style="background-color:#F8F8F8;">
-<form method="GET" action="{% url 'Filter_Search' %}">
-<div class="row justify-content-center">
-      <div class="col-md-2 mb-3">
-        <select class="form-select-input" name="developer" aria-label="Default select example">
-          <option value="" disabled selected>Developer</option>
-              {% for i in developer %}
-                <option value="{{ i.id }}">{{ i.name }}</option>
-              {% endfor %}
-        </select>
-      </div>
-      <div class="col-md-2 mb-3">
-        <select class="form-select-input" name="location" aria-label="Default select example">
-          <option value="" disabled selected>Location</option>
-              {% for i in location %}
-                <option value="{{ i.id }}">{{ i.city }}</option>
-              {% endfor %}
-        </select>
-      </div>
-      <div class="col-md-2 mb-3">
-        <select class="form-select-input" name="category" aria-label="Default select example">
-          <option value="" disabled selected>Category</option>
+  <!-- properties.html -->
+  <div style="height:40px;background-color:#F8F8F8;"></div>
+  <div class="container-fluid" style="background-color:#F8F8F8;">
+    <form method="GET" action="{% url 'Filter_Search' %}">
+      <div class="row justify-content-center">
+        <div class="col-md-2 mb-3">
+          <select class="form-select-input" name="developer" aria-label="Default select example">
+            <option value="" disabled selected>Developer</option>
+            {% for i in developer %}
+            <option value="{{ i.id }}">{{ i.name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="col-md-2 mb-3">
+          <select class="form-select-input" name="location" aria-label="Default select example">
+            <option value="" disabled selected>Location</option>
+            {% for i in location %}
+            <option value="{{ i.id }}">{{ i.city }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="col-md-2 mb-3">
+          <select class="form-select-input" name="category" aria-label="Default select example">
+            <option value="" disabled selected>Category</option>
             {% for i in property_category %}
-                <option value="{{ i.id }}">{{ i.name }}</option>
+            <option value="{{ i.id }}">{{ i.name }}</option>
             {% endfor %}
-        </select>
-      </div>
-      <!-- Add this inside the form in properties.html -->
-<div class="col-md-2 mb-3">
-    <select class="form-select-input" name="status" aria-label="Default select example">
-        <option value="" disabled selected>Type</option>
-        <option value="OFF PLAN">Off-Plan</option>
-        <option value="FOR SALE">Ready to Move</option>
-    </select>
-</div>
-<div class="col-md-2 mb-3">
-    <select class="form-select-input" name="sort_by" aria-label="Default select example">
-        <option value="" disabled selected>Sort by</option>
-        <option value="low_to_high">Low to High</option>
-        <option value="high_to_low">High to Low</option>
-        <option value="newest">Newest</option>
-        <option value="oldest">Oldest</option>
-    </select>
-</div>
-
-      <div class="col-md-2">
-        <button type="submit" class="search-button">Search</button>
-      </div>
-    </div>
-  </form>
-</div>
-
-<div class="fixed-social-medias">
-<img id="whatsapp-icon" src="https://cdn-icons-png.flaticon.com/128/3670/3670051.png" onclick="togglePopup()"/>
-<div id="popup" class="popup">
-<div class="chat-content">
-<div class="chat-content-2">
-<img src="https://cdn-icons-png.flaticon.com/128/3670/3670051.png" class="whatsapp-icon-2">
-<span class="chat-span">Start a Conversation</span>
-</div>
-<div>
-<a class="text-light " href="https://wa.me/971509647864" target="_blank">click here to continue to whatsapp chat</a>
-</div>
-</div>
-</div>
-<div class="need-help" id="need-help-div">
-<span>Need a Help for a Property?</span>
-<span>Message us on <b>WhatsApp!</b></span>
-</div>
-</div>
-
-
-<!-- Rest of your properties.html code -->
-
-
-
-<div class="free-space-div"></div>
-<!-- properties.html -->
-<div class="container-fluid" style="background-color:#F8F8F8;">
-  <div class="row">
-    <div class="col-md-8">
-      <div class="row g-2">
-       {% if properties %}
-        {% for property_item in properties %}
-            <div class="col-12 col-md-6 mb-3">
-              <div class="card-item">
-            <img src="{% if property_item.images.all %}{{ property_item.images.first.image.url }}{% else %}https://dubaiproperties.org.in/wp-content/uploads/2015/12/image035.jpg-e1449897855909.jpg{% endif %}" class="item-card-image" alt="Property Image">
-        <div class="overlay-content">
-        <div class="overlay-content-top">
-        <button class="featured-button">FEATURED</button>
-        <button class="status-button">{{ property_item.status }}</button>
+          </select>
         </div>
-        <div class="overlay-content-bottom">
-<span class="mb-2">Starting from <b>{{ property_item.price }}</b></span>
-<!-- Button to trigger individual modals -->
-<div class="preview-plus-download">
-<button type="button" class="modal-open-button bg-transparent" data-bs-toggle="modal" data-bs-target="#brochuremodal" data-bs-whatever="@fat"><i class="fa-solid fa-file-arrow-down"></i></button>
-<button type="button" class="bg-transparent preview-icon" data-bs-toggle="modal" data-bs-target="#myModal{{ property_item.id }}"><i class="fa-solid fa-up-right-and-down-left-from-center"></i></button>
-<button type="button" id="liveToastBtn" data-bs-target="#liveToastBtn{{ property_item.id }}" class="bg-transparent compare-icon" onclick="showToast('{{ property_item.id }}', '{{ property_item.images.first.image.url }}', '{{ property_item.images.second.image.url }}')"><i class="fa-solid fa-square-plus"></i></button>
-</div>
+        <!-- Add this inside the form in properties.html -->
+        <div class="col-md-2 mb-3">
+          <select class="form-select-input" name="status" aria-label="Default select example">
+            <option value="" disabled selected>Type</option>
+            <option value="OFF PLAN">Off-Plan</option>
+            <option value="FOR SALE">Ready to Move</option>
+          </select>
+        </div>
+        <div class="col-md-2 mb-3">
+          <select class="form-select-input" name="sort_by" aria-label="Default select example">
+            <option value="" disabled selected>Sort by</option>
+            <option value="low_to_high">Low to High</option>
+            <option value="high_to_low">High to Low</option>
+            <option value="newest">Newest</option>
+            <option value="oldest">Oldest</option>
+          </select>
+        </div>
 
-<div class="position-fixed top-0 end-0 p-3" id="liveToastBtn{{ property_item.id }}" style="z-index: 11;">
-  <div id="liveToast" class="toast toast-message" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="toast-header d-flex flex-column">
-      <strong class="me-auto">Compare listings</strong>
-        <div id="toastBody"></div>
-        <div class="toast-body d-flex flex-row justify-content-between" style="width:100%;">
-<a class="btn btn-dark btn-sm" onclick="redirectToComparePage()">Compare</a>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close" onclick="hideToast()" style="z-index:1000;"></button>
+        <div class="col-md-2">
+          <button type="submit" class="search-button">Search</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="fixed-social-medias">
+    <img id="whatsapp-icon" src="https://cdn-icons-png.flaticon.com/128/3670/3670051.png" onclick="togglePopup()" />
+    <div id="popup" class="popup">
+      <div class="chat-content">
+        <div class="chat-content-2">
+          <img src="https://cdn-icons-png.flaticon.com/128/3670/3670051.png" class="whatsapp-icon-2">
+          <span class="chat-span">Start a Conversation</span>
+        </div>
+        <div>
+          <a class="text-light " href="https://wa.me/971509647864" target="_blank">click here to continue to whatsapp
+            chat</a>
+        </div>
+      </div>
     </div>
+    <div class="need-help" id="need-help-div">
+      <span>Need a Help for a Property?</span>
+      <span>Message us on <b>WhatsApp!</b></span>
     </div>
   </div>
-</div>
 
-<!-- Modal for each property -->
-<div class="modal" id="myModal{{ property_item.id }}">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content">
 
-      <!-- Modal Header -->
-      <div class="modal-header bg-dark">
-        <img src="{% static 'img/logo.png' %}" class="modal-logo">
-        <h4 class="modal-title text-light luxury-acres">LUXURY ACRES</h4>
-        <button type="button" class="bg-transparent preview-icon" data-bs-dismiss="modal"><i class="fa-solid fa-rectangle-xmark"></i></button>
-      </div>
+  <!-- Rest of your properties.html code -->
 
-      <div class="modal-body preview-body">
-        <div id="carousel{{ property_item.id }}" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            {% for image in property_item.images.all %}
-              <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                <img src="{{ image.image.url }}" alt="Property Image" class="preview-large-photo">
+
+
+  <div class="free-space-div"></div>
+  <!-- properties.html -->
+  <div class="container-fluid" style="background-color:#F8F8F8;">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="row g-2">
+          <!-- {% if properties %} -->
+          {% for property_item in properties %}
+          <div class="col-12 col-md-6 mb-3">
+            <div class="card-item">
+              <img
+                src="{% if property_item.images.first %}{{ property_item.images.first.image }}{% else %}https://dubaiproperties.org.in/wp-content/uploads/2015/12/image035.jpg{% endif %}"
+                class="item-card-image" alt="Property Image">
+
+              <!-- <img src="{% if property_item.images.all %}{{ property_item.images.first.image.url }}{% else %}https://dubaiproperties.org.in/wp-content/uploads/2015/12/image035.jpg-e1449897855909.jpg{% endif %}" class="item-card-image" alt="Property Image"> -->
+              <div class="overlay-content">
+                <div class="overlay-content-top">
+                  <button class="featured-button">FEATURED</button>
+                  <button class="status-button">{{ property_item.sales_status.name }}</button>
+                </div>
+                <div class="overlay-content-bottom">
+                  <span class="mb-2">Starting from <b>{{ property_item.low_price }}</b></span>
+                  <!-- Button to trigger individual modals -->
+                  <div class="preview-plus-download">
+                    <button type="button" class="modal-open-button bg-transparent" data-bs-toggle="modal"
+                      data-bs-target="#brochuremodal" data-bs-whatever="@fat"><i
+                        class="fa-solid fa-file-arrow-down"></i></button>
+                    <button type="button" class="bg-transparent preview-icon" data-bs-toggle="modal"
+                      data-bs-target="#myModal{{ property_item.id }}"><i
+                        class="fa-solid fa-up-right-and-down-left-from-center"></i></button>
+                    <button type="button" id="liveToastBtn" data-bs-target="#liveToastBtn{{ property_item.id }}"
+                      class="bg-transparent compare-icon"
+                      onclick="showToast('{{ property_item.id }}', '{{ property_item.images.first.image.url }}', '{{ property_item.images.second.image.url }}')"><i
+                        class="fa-solid fa-square-plus"></i></button>
+                  </div>
+
+                  <div class="position-fixed top-0 end-0 p-3" id="liveToastBtn{{ property_item.id }}"
+                    style="z-index: 11;">
+                    <div id="liveToast" class="toast toast-message" role="alert" aria-live="assertive"
+                      aria-atomic="true">
+                      <div class="toast-header d-flex flex-column">
+                        <strong class="me-auto">Compare listings</strong>
+                        <div id="toastBody"></div>
+                        <div class="toast-body d-flex flex-row justify-content-between" style="width:100%;">
+                          <a class="btn btn-dark btn-sm" onclick="redirectToComparePage()">Compare</a>
+                          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"
+                            onclick="hideToast()" style="z-index:1000;"></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Modal for each property -->
+                  <div class="modal" id="myModal{{ property_item.id }}">
+                    <div class="modal-dialog modal-xl">
+                      <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header bg-dark">
+                          <img src="{% static 'img/logo.png' %}" class="modal-logo">
+                          <h4 class="modal-title text-light luxury-acres">KIF REALTY</h4>
+                          <button type="button" class="bg-transparent preview-icon" data-bs-dismiss="modal"><i
+                              class="fa-solid fa-rectangle-xmark"></i></button>
+                        </div>
+
+                        <div class="modal-body preview-body">
+                          <div id="carousel{{ property_item.id }}" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                              {% for image in property_item.images.all %}
+                              <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                <img src="{{ image.image.url }}" alt="Property Image" class="preview-large-photo">
+                              </div>
+                              {% endfor %}
+                            </div>
+                            <button class="carousel-control-prev" type="button"
+                              data-bs-target="#carousel{{ property_item.id }}" data-bs-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button"
+                              data-bs-target="#carousel{{ property_item.id }}" data-bs-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Next</span>
+                            </button>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            {% endfor %}
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carousel{{ property_item.id }}" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carousel{{ property_item.id }}" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-</div>
-</div>
-<div class="card-content-bottom">
+              <div class="card-content-bottom">
                 <h5>{{ property_item.title }}</h5>
-                    <span class="mb-2">{{ property_item.description|slice:"0:120" }}</span>
- <div class="content-bottom-last">
- <div class="content-counts">
-                        <i class="fa-solid fa-bed"></i>
-                        <span>{{ property_item.bedrooms }}</span>
-<i class="fa-solid fa-bath"></i>
-                        <span>{{ property_item.bathrooms }}</span>
-                    </div>
-                    <div class="details-button">
+                <span class="mb-2">{{ property_item.description|striptags|slice:"0:120" }}</span>
+                <div class="content-bottom-last">
+                  <div class="content-counts">
+                    <i class="fa-solid fa-bed"></i>
+                    <span>
+                      {% if property_item.room_counts %}
+                      {% for room in property_item.room_counts %}
+                      {{ room }}{% if not forloop.last %}, {% endif %}
+                      {% endfor %}
+                      rooms
+                      {% else %}
+                      No bedrooms info
+                      {% endif %}
+                    </span>
+                    <i class="fa-solid fa-building"></i>
+                    <span>{{ property_item.min_area|floatformat:"0" }} sqft</span>
+                  </div>
+                  <div class="details-button">
                     <button onclick="window.location.href='{% url 'singlepage' pk=property_item.pk %}'">DETAILS</button>
-                    </div>
-                    </div>
-                     <span class="text-dark">{{property_item.category}}</span>
-        </div>
-      </div>
-     </div>
-                 {% endfor %}
-      {% else %}
-      <div class="container mt-5 mb-5 text-center">
-        <p class="text-center">{{ message }}</p>
-        <a href="{% url 'home2' %}" class="btn btn-dark btn-sm">Back to search</a>
-        </div>
-      {% endif %}
-       <div class="col-md-12 d-flex align-items-center justify-content-center mb-4">
-  <button id="loadMoreBtn" class="btn btn-dark">Load More</button>
-  </div>
+                  </div>
+                </div>
+                <span class="text-dark">{{property_item.property_category.name}}</span>
+              </div>
             </div>
-         </div>
-
-<div class="modal fade" id="brochuremodal{{ property_item.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Download Brochure</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          {% endfor %}
+          <!-- {% else %} -->
+          <div class="container mt-5 mb-5 text-center">
+            <p class="text-center">{{ message }}</p>
+            <a href="{% url 'home2' %}" class="btn btn-dark btn-sm">Back to search</a>
+          </div>
+          <!-- {% endif %} -->
+          <div class="col-md-12 d-flex align-items-center justify-content-center mb-4">
+            <button id="loadMoreBtn" class="btn btn-dark">Load More</button>
+          </div>
+        </div>
       </div>
-      <div class="modal-body body-of-modal-2">
 
-        <form id="your-form-id" onsubmit="">
-  <div class="mb-4">
-          <input type="text" class="form-inputs" id="from_name" name="from_name" placeholder="Name">
-          <p class="error-message" id="name-error"></p>
-  </div>
-  <div class="mb-4">
-          <input type="email" class="form-inputs" id="email_id" name="email_id" placeholder="Email">
-          <p class="error-message" id="email-error"></p>
-  </div>
-  <div class="mb-4">
-  <input type="tel" id="phoneNumber" class="form-inputs">
-  <p class="error-message" id="phone-error"></p>
-  <input type="hidden" id="countryCode" name="countryCode">
+      <div class="modal fade" id="brochuremodal{{ property_item.id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Download Brochure</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body body-of-modal-2">
 
-  </div>
-  <div class="mb-4">
-   <input type="text" class="form-inputs" id="propertyname" value="PropertyName" name="propertyname" placeholder="" readonly>
-            <p class="error-message" id="message-error"></p>
-  </div>
-  <div class="submit-button-container mb-4">
-  <button class="submit-button-download mx-auto" onclick="handlePostComment(event)">SUBMIT</button>
-  </div>
-</form>
-       <div id="download-container" style="display:none;">
-           <div class="download-container-2">
-               <span>Thank You for Contacting Us</span>
-           <a id="" class="mx-auto download-link" href="{% static 'img/bg-image.jpg' %}" download>
-    <button id="download-button" class="mx-auto">Download Brochure</button>
-    </a>
-    </div>
-</div>
+              <form id="your-form-id" onsubmit="">
+                <div class="mb-4">
+                  <input type="text" class="form-inputs" id="from_name" name="from_name" placeholder="Name">
+                  <p class="error-message" id="name-error"></p>
+                </div>
+                <div class="mb-4">
+                  <input type="email" class="form-inputs" id="email_id" name="email_id" placeholder="Email">
+                  <p class="error-message" id="email-error"></p>
+                </div>
+                <div class="mb-4">
+                  <input type="tel" id="phoneNumber" class="form-inputs">
+                  <p class="error-message" id="phone-error"></p>
+                  <input type="hidden" id="countryCode" name="countryCode">
 
+                </div>
+                <div class="mb-4">
+                  <input type="text" class="form-inputs" id="propertyname" value="PropertyName" name="propertyname"
+                    placeholder="" readonly>
+                  <p class="error-message" id="message-error"></p>
+                </div>
+                <div class="submit-button-container mb-4">
+                  <button class="submit-button-download mx-auto" onclick="handlePostComment(event)">SUBMIT</button>
+                </div>
+              </form>
+              <div id="download-container" style="display:none;">
+                <div class="download-container-2">
+                  <span>Thank You for Contacting Us</span>
+                  <a id="" class="mx-auto download-link" href="{% static 'img/bg-image.jpg' %}" download>
+                    <button id="download-button" class="mx-auto">Download Brochure</button>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
 
-    <div class="col-md-4 fixed-card">
-      <div class="row">
-        <div class="col-md-12 mb-2">
-          <div class="contact-card">
+      <div class="col-md-4 fixed-card">
+        <div class="row">
+          <div class="col-md-12 mb-2">
+            <div class="contact-card">
               <h5 class="text-center mx-auto">Contact</h5>
-            <div class="office-details">
-              <img src="{% static 'img/office.png' %}" />
-              <span>Shams Business Centre <br> Sharjah Media City Free Zone <br> Al Messaned <br> Sharjah, UAE</span>
-            </div>
-            <div class="contact-details">
-              <img src="{% static 'img/phone.png' %}" />
-              <span>+971 50 964 7864</span>
-            </div>
-            <div class="mail-details">
-              <img src="{% static 'img/mail.png' %}" />
-              <span>info@kifrealty.com</span>
+              <div class="office-details">
+                <img src="{% static 'img/office.png' %}" />
+                <span>Shams Business Centre <br> Sharjah Media City Free Zone <br> Al Messaned <br> Sharjah, UAE</span>
+              </div>
+              <div class="contact-details">
+                <img src="{% static 'img/phone.png' %}" />
+                <span>+971 50 964 7864</span>
+              </div>
+              <div class="mail-details">
+                <img src="{% static 'img/mail.png' %}" />
+                <span>info@kifrealty.com</span>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-12">
-          <div class="social-links-card">
-            <h5>Connect with us</h5>
-            <div class="social-links-icons">
-              <a href="" class="text-dark"><i class="fa-brands fa-square-facebook"></i></a>
-              <a href="" class="text-dark"><i class="fa-brands fa-square-whatsapp"></i></a>
-              <a href="" class="text-dark"><i class="fa-brands fa-square-instagram"></i></a>
-              <a href="" class="text-dark"><i class="fa-brands fa-linkedin"></i></a>
+          <div class="col-md-12">
+            <div class="social-links-card">
+              <h5>Connect with us</h5>
+              <div class="social-links-icons">
+                <a href="" class="text-dark"><i class="fa-brands fa-square-facebook"></i></a>
+                <a href="" class="text-dark"><i class="fa-brands fa-square-whatsapp"></i></a>
+                <a href="" class="text-dark"><i class="fa-brands fa-square-instagram"></i></a>
+                <a href="" class="text-dark"><i class="fa-brands fa-linkedin"></i></a>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/18.3.5/js/intlTelInput.min.js" integrity="sha512-KcjcQ2KL6oVcezrL/m6NO1PW13QMnEN5BM4/u1JV9Pu0kBQgn/TmK1W6diupb4vMuGtFnO6Ojg3nzWutkow9Uw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
- <script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/18.3.5/js/intlTelInput.min.js"
+    integrity="sha512-KcjcQ2KL6oVcezrL/m6NO1PW13QMnEN5BM4/u1JV9Pu0kBQgn/TmK1W6diupb4vMuGtFnO6Ojg3nzWutkow9Uw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
 
-const input = document.querySelector("#phoneNumber");
-const countryCodeInput = document.getElementById('countryCode');
+    const input = document.querySelector("#phoneNumber");
+    const countryCodeInput = document.getElementById('countryCode');
 
-const defaultCountryCode = 'ae';
+    const defaultCountryCode = 'ae';
 
-const iti = window.intlTelInput(input, {
-  separateDialCode: true,
-  utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/18.3.5/js/utils.js",
-});
+    const iti = window.intlTelInput(input, {
+      separateDialCode: true,
+      utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/18.3.5/js/utils.js",
+    });
 
-iti.setCountry(defaultCountryCode);
+    iti.setCountry(defaultCountryCode);
 
-const selectedCountryData = iti.getSelectedCountryData();
-countryCodeInput.value = '+' + selectedCountryData.dialCode;
+    const selectedCountryData = iti.getSelectedCountryData();
+    countryCodeInput.value = '+' + selectedCountryData.dialCode;
 
-input.addEventListener('input', function () {
-  const selectedCountryData = iti.getSelectedCountryData();
-  countryCodeInput.value = '+' + selectedCountryData.dialCode;
-});
-
-
-  function handlePostComment(event) {
-  event.preventDefault();
-
-  const countryCode = iti.getSelectedCountryData().dialCode;
-  const name = document.getElementById("from_name").value;
-  const email = document.getElementById("email_id").value;
-  const phone = document.getElementById("phoneNumber").value;
-  const propertyname = document.getElementById("propertyname").value;
-  const countryCode2 = document.getElementById('countryCode').value;
-
-  const nameError = document.getElementById("name-error");
-  const emailError = document.getElementById("email-error");
-  const phoneError = document.getElementById("phone-error");
-
-  nameError.innerText = "";
-  emailError.innerText = "";
-  phoneError.innerText = "";
-
-  if (name.trim() === "") {
-    nameError.innerText = "Please enter your name";
-    return;
-  }
-
-  var emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-  if (email.trim() === "" || !emailRegex.test(email)) {
-    emailError.innerText = "Please enter a valid email address";
-    return;
-  }
-
-  if (phone.trim() === "" || phone.length < 7 || phone.length > 11) {
-    phoneError.innerText = "Please enter a valid phone number";
-    return;
-  }
+    input.addEventListener('input', function () {
+      const selectedCountryData = iti.getSelectedCountryData();
+      countryCodeInput.value = '+' + selectedCountryData.dialCode;
+    });
 
 
+    function handlePostComment(event) {
+      event.preventDefault();
 
-  // Rest of your code for form submission
+      const countryCode = iti.getSelectedCountryData().dialCode;
+      const name = document.getElementById("from_name").value;
+      const email = document.getElementById("email_id").value;
+      const phone = document.getElementById("phoneNumber").value;
+      const propertyname = document.getElementById("propertyname").value;
+      const countryCode2 = document.getElementById('countryCode').value;
 
-  var params = {
-    from_name: name,
-    email_id: email,
-    phone_number: phone,
-    property_name: propertyname,
-    countryCode: countryCode
-  };
+      const nameError = document.getElementById("name-error");
+      const emailError = document.getElementById("email-error");
+      const phoneError = document.getElementById("phone-error");
 
-  emailjs.send("service_9c99hwm", "template_4u5bafj", params).then(function (res) {
-    alert("Enquiry Sent Successfully!! ");
-  });
-  document.getElementById("your-form-id").reset();
-  var downloadContainer = document.getElementById("download-container");
-  downloadContainer.style.display = "block";
-}
-</script>
-<script type="text/javascript"
-  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+      nameError.innerText = "";
+      emailError.innerText = "";
+      phoneError.innerText = "";
 
-<script type="text/javascript">
-  emailjs.init('9_7nyGNkakEWMaqYN')
-</script>
+      if (name.trim() === "") {
+        nameError.innerText = "Please enter your name";
+        return;
+      }
+
+      var emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+      if (email.trim() === "" || !emailRegex.test(email)) {
+        emailError.innerText = "Please enter a valid email address";
+        return;
+      }
+
+      if (phone.trim() === "" || phone.length < 7 || phone.length > 11) {
+        phoneError.innerText = "Please enter a valid phone number";
+        return;
+      }
 
 
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    // Set the number of properties to show initially and on each load
-    var itemsPerPage = 10;
-    var currentItems = itemsPerPage;
 
-    // Select all property items
-    var propertyItems = document.querySelectorAll('.col-12.col-md-6.mb-3'); // Update this selector
+      // Rest of your code for form submission
 
-    // Show/hide properties based on the currentItems variable
-    function toggleProperties() {
+      var params = {
+        from_name: name,
+        email_id: email,
+        phone_number: phone,
+        property_name: propertyname,
+        countryCode: countryCode
+      };
+
+      emailjs.send("service_9c99hwm", "template_4u5bafj", params).then(function (res) {
+        alert("Enquiry Sent Successfully!! ");
+      });
+      document.getElementById("your-form-id").reset();
+      var downloadContainer = document.getElementById("download-container");
+      downloadContainer.style.display = "block";
+    }
+  </script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+  <script type="text/javascript">
+    emailjs.init('9_7nyGNkakEWMaqYN')
+  </script>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Set the number of properties to show initially and on each load
+      var itemsPerPage = 10;
+      var currentItems = itemsPerPage;
+
+      // Select all property items
+      var propertyItems = document.querySelectorAll('.col-12.col-md-6.mb-3'); // Update this selector
+
+      // Show/hide properties based on the currentItems variable
+      function toggleProperties() {
         propertyItems.forEach(function (item, index) {
-            if (index < currentItems) {
-                item.style.display = 'block';
-            } else {
-                item.style.display = 'none';
-            }
+          if (index < currentItems) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
         });
 
         // Toggle Load More and Load Less buttons visibility
         var loadMoreBtn = document.getElementById('loadMoreBtn');
 
         loadMoreBtn.style.display = currentItems < propertyItems.length ? 'block' : 'none';
-    }
+      }
 
-    // Initial toggle
-    toggleProperties();
+      // Initial toggle
+      toggleProperties();
 
-    // Load More button click event
-    document.getElementById('loadMoreBtn').addEventListener('click', function () {
+      // Load More button click event
+      document.getElementById('loadMoreBtn').addEventListener('click', function () {
         currentItems += itemsPerPage;
         toggleProperties();
-    });
-
-    // Load Less button click event
-
-});
-</script>
-<script>
-function togglePopup() {
-  var popup = document.getElementById('popup');
-  var whatsappIcon = document.getElementById('whatsapp-icon');
-  var chattext = document.getElementById('need-help-div');
-
-  if (popup.style.display === 'none' || popup.style.display === '') {
-    popup.style.display = 'block';
-    whatsappIcon.src = 'https://cdn-icons-png.flaticon.com/128/14026/14026693.png';
-    chattext.style.display="none";
-  } else {
-    popup.style.display = 'none';
-    whatsappIcon.src = 'https://cdn-icons-png.flaticon.com/128/3670/3670051.png';
-       chattext.style.display = "flex";
-    chattext.style.justifyContent = "center";
-    chattext.style.alignItems = "center";
-  }
-}
-</script>
-
-<script>
-  let selectedProperties = [];
-
-  function showToast(propertyId, image1, image2) {
-    if (selectedProperties.length < 3) {
-      selectedProperties.push({ propertyId, images: [image1, image2] });
-      updateToastBody();
-
-      var toast = new bootstrap.Toast(document.getElementById('liveToast'), {
-        autohide: false
       });
-      toast.show();
-    } else {
-      alert('You can compare a maximum of three properties.');
+
+      // Load Less button click event
+
+    });
+  </script>
+  <script>
+    function togglePopup() {
+      var popup = document.getElementById('popup');
+      var whatsappIcon = document.getElementById('whatsapp-icon');
+      var chattext = document.getElementById('need-help-div');
+
+      if (popup.style.display === 'none' || popup.style.display === '') {
+        popup.style.display = 'block';
+        whatsappIcon.src = 'https://cdn-icons-png.flaticon.com/128/14026/14026693.png';
+        chattext.style.display = "none";
+      } else {
+        popup.style.display = 'none';
+        whatsappIcon.src = 'https://cdn-icons-png.flaticon.com/128/3670/3670051.png';
+        chattext.style.display = "flex";
+        chattext.style.justifyContent = "center";
+        chattext.style.alignItems = "center";
+      }
     }
-  }
+  </script>
 
-  function hideToast() {
-    const toastLiveExample = document.getElementById('liveToast');
-  const toast = new bootstrap.Toast(toastLiveExample);
-  toast.hide();
-  }
+  <script>
+    let selectedProperties = [];
 
-  function updateToastBody() {
-    const toastBody = document.getElementById('toastBody');
-    toastBody.innerHTML = '';
+    function showToast(propertyId, image1, image2) {
+      if (selectedProperties.length < 3) {
+        selectedProperties.push({ propertyId, images: [image1, image2] });
+        updateToastBody();
 
-    selectedProperties.forEach((property, index) => {
-      const addedItemDiv = document.createElement('div');
-      addedItemDiv.classList.add('added-item-div');
+        var toast = new bootstrap.Toast(document.getElementById('liveToast'), {
+          autohide: false
+        });
+        toast.show();
+      } else {
+        alert('You can compare a maximum of three properties.');
+      }
+    }
 
-      property.images.forEach(image => {
-        if (image.trim() !== "") {
-          const imgElement = document.createElement('img');
-          imgElement.src = image;
-          imgElement.classList.add('added-item');
-          addedItemDiv.appendChild(imgElement);
-        }
+    function hideToast() {
+      const toastLiveExample = document.getElementById('liveToast');
+      const toast = new bootstrap.Toast(toastLiveExample);
+      toast.hide();
+    }
+
+    function updateToastBody() {
+      const toastBody = document.getElementById('toastBody');
+      toastBody.innerHTML = '';
+
+      selectedProperties.forEach((property, index) => {
+        const addedItemDiv = document.createElement('div');
+        addedItemDiv.classList.add('added-item-div');
+
+        property.images.forEach(image => {
+          if (image.trim() !== "") {
+            const imgElement = document.createElement('img');
+            imgElement.src = image;
+            imgElement.classList.add('added-item');
+            addedItemDiv.appendChild(imgElement);
+          }
+        });
+
+        toastBody.appendChild(addedItemDiv);
       });
+    }
+    function redirectToComparePage() {
+      var selectedPropertyIds = selectedProperties.map(property => property.propertyId).join(',');
+      window.location.href = "{% url 'compare' %}?property_ids=" + selectedPropertyIds;
+    }
 
-      toastBody.appendChild(addedItemDiv);
-    });
-  }
-function redirectToComparePage() {
-  var selectedPropertyIds = selectedProperties.map(property => property.propertyId).join(',');
-  window.location.href = "{% url 'compare' %}?property_ids=" + selectedPropertyIds;
-}
-
-</script>
+  </script>
 
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-{% endblock %}
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>
+  {% endblock %}
 </body>
+
 </html>

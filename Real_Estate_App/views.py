@@ -1,5 +1,5 @@
 from django.shortcuts import render,get_object_or_404
-from Real_Estate_App.models import PropertyCategory, Location, Property, Developer
+from Real_Estate_App.models import PropertyCategory, Property, Developer
 from django.db.models import Avg, Q
 from django.http import HttpResponse
 
@@ -22,10 +22,18 @@ def PRIVACY(request):
 
 def aljada(request):
     return render(request, 'main/aljada.html')
+
 def propertydetail(request):
     return render(request, 'main/propertydetail.html')
+
 def burjazizi(request):
     return render(request, 'main/burjazizilanding.html')
+
+def blogView(request):
+    return render(request,'main/blog.html')
+
+def blogdetailView(request):
+    return render(request,'main/blogdetail.html')
 
 def COMING(request):
     return render(request, 'main/coming.html')
@@ -33,24 +41,40 @@ def COMING(request):
 
 from django.shortcuts import render
 from django.db.models import Avg
-from .models import Location, Property, PropertyCategory
+from .models import  Property, PropertyCategory
 
+
+from django.shortcuts import render
+from django.db.models import Prefetch
+from .models import *
 def HOME2(request):
-    location = Location.objects.all()
+    # location = Location.objects.all()
     property_category = PropertyCategory.objects.all()
     developer = Developer.objects.all()
 
     # Get all properties
-    properties = Property.objects.all()
+    properties = Property.objects.prefetch_related(
+        Prefetch(
+            'grouped_apartments',
+            queryset=GroupedApartment.objects.only('rooms'),
+            to_attr='safe_grouped_apartments'
+        )
+    )
+    for property_item in properties:
+        rooms = set()
+        for apt in getattr(property_item, 'safe_grouped_apartments', []):
+            if apt.rooms and apt.rooms.strip():
+                rooms.add(apt.rooms.strip())
+        property_item.room_counts = sorted(rooms, key=sort_room_key)
 
 
-    latest_properties = Property.objects.order_by('-created_at')[:9]
+    latest_properties = Property.objects.order_by('-updated_at')[:9]
 
 
     # Fetch properties in the top three attractive areas
-    attractive_properties = Property.objects.order_by('-price')[:3]
+    attractive_properties = Property.objects.order_by('-low_price')[:3]
     context = {
-        'location': location,
+        # 'location': location,
         'property_category': property_category,
         'developer' : developer,
         'properties': properties,
@@ -60,50 +84,91 @@ def HOME2(request):
 
     return render(request, 'main/home2.html', context)
 
-from django.shortcuts import render
-from .models import Property, Location, PropertyCategory
-
+def sort_room_key(x):
+    return (0, int(x)) if x.isdigit() else (1, x.lower())
 def PROPERTIES(request):
-    location = Location.objects.all()
-    property_category = PropertyCategory.objects.all()
-    developer = Developer.objects.all()
+    properties = Property.objects.prefetch_related(
+        Prefetch(
+            'grouped_apartments',
+            queryset=GroupedApartment.objects.only('rooms'),
+            to_attr='safe_grouped_apartments'
+        )
+    ).order_by('-updated_at')
 
-
-    # Check if 'status' parameter is present in the URL
-    status_param = request.GET.get('status', None)
-
-    # Filter properties based on status parameter
-    if status_param == 'offplan':
-        properties = Property.objects.filter(status='OFF PLAN').order_by('-created_at')
-    elif status_param == 'ready_to_move':
-        properties = Property.objects.filter(status='FOR SALE').order_by('-created_at')
-    else:
-        # If no status parameter is provided, show all properties
-        properties = Property.objects.order_by('-created_at')
+    for property_item in properties:
+        rooms = set()
+        for apt in getattr(property_item, 'safe_grouped_apartments', []):
+            if apt.rooms and apt.rooms.strip():
+                rooms.add(apt.rooms.strip())
+        property_item.room_counts = sorted(rooms, key=sort_room_key)
 
     context = {
-        'location': location,
-        'property_category': property_category,
-        'developer' : developer,
+        'property_category': PropertyCategory.objects.all(),
+        'developer': Developer.objects.all(),
         'properties': properties,
     }
 
     return render(request, 'main/properties.html', context)
+# def PROPERTIES(request):
+#     status_filter = request.GET.get('status')
+
+#     # Base queryset
+#     properties = Property.objects.all()
+
+#     if status_filter == 'offplan':
+#         properties = properties.filter(status='OFF PLAN')
+#     elif status_filter == 'ready_to_move':
+#         properties = properties.filter(status='FOR SALE')
+
+#     properties = properties.order_by('-updated_at')
+
+#     context = {
+#         'property_category': PropertyCategory.objects.all(),
+#         'developer': Developer.objects.all(),
+#         'properties': properties,
+#     }
+    
+#     return render(request, 'main/properties.html', context)
+
+    # location = Location.objects.all()
+    # property_category = PropertyCategory.objects.all()
+    # developer = Developer.objects.all()
+
+
+    # # Check if 'status' parameter is present in the URL
+    # status_param = request.GET.get('status', None)
+
+    # # Filter properties based on status parameter
+    # if status_param == 'offplan':
+    #     properties = Property.objects.filter(status='OFF PLAN').order_by('-updated_at')
+    # elif status_param == 'ready_to_move':
+    #     properties = Property.objects.filter(status='FOR SALE').order_by('-updated_at')
+    # else:
+    #     # If no status parameter is provided, show all properties
+    #     properties = Property.objects.order_by('-updated_at')
+
+    # context = {
+    #     # 'location': location,
+    #     'property_category': property_category,
+    #     'developer' : developer,
+    #     'properties': properties,
+    # }
+
 
 
 def SINGLEPAGE(request, pk):
-    location = Location.objects.all()
+    # location = Location.objects.all()
     property_category = PropertyCategory.objects.all()
     developer = Developer.objects.all()
     property_instance = get_object_or_404(Property, pk=pk)
-    images = property_instance.images.all()
+    # images = property_instance.images.all()
 
     context = {
-        'location' : location,
+        # 'location' : location,
         'property_category' : property_category,
         'developer' : developer,
         'property' : property_instance,
-        'images' : images,
+        # 'images' : images,
     }
 
     return render(request, 'main/singlepage.html', context)
@@ -123,7 +188,7 @@ def property_search(request):
 
         # Get all available locations and property categories
         all_developers = Developer.objects.all()
-        all_locations = Location.objects.all()
+        # all_locations = Location.objects.all()
         all_categories = PropertyCategory.objects.all()
 
         if properties.exists():
@@ -138,7 +203,7 @@ def property_search(request):
 
 
 def Filter_Search(request):
-    location = Location.objects.all()
+    # location = Location.objects.all()
     property_category = PropertyCategory.objects.all()
     developer = Developer.objects.all()
 
@@ -179,14 +244,14 @@ def Filter_Search(request):
         message = "Properties not available in the specified criteria."
         context = {
             'developer': developer,
-            'location': location,
+            # 'location': location,
             'property_category': property_category,
             'message': message,
         }
         return render(request, 'main/properties.html', context)
 
     context = {
-        'location': location,
+        # 'location': location,
         'property_category': property_category,
         'developer' : developer,
         'properties': properties,
@@ -266,7 +331,7 @@ def add_property_to_bayut(request, property_id):
 from django.http import JsonResponse
 from django.shortcuts import render
 import requests
-from .models import Properties
+from .models import Property
 
 def add_property(request):
     if request.method == 'POST':
@@ -275,7 +340,7 @@ def add_property(request):
         price = request.POST.get('price')
 
         # Save property in the real estate website
-        property_obj = Properties.objects.create(
+        property_obj = Property.objects.create(
             title=title,
             description=description,
             price=price,
