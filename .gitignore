@@ -11,3 +11,8 @@
 # Next push
 !zip_code.py
 
+.env
+.env/
+.env.*
+
+
