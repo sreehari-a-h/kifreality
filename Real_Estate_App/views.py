@@ -48,11 +48,10 @@ from django.shortcuts import render
 from django.db.models import Prefetch
 from .models import *
 def HOME2(request):
-    # location = Location.objects.all()
     property_category = PropertyCategory.objects.all()
     developer = Developer.objects.all()
 
-    # Get all properties
+    # Get all properties with prefetch
     properties = Property.objects.prefetch_related(
         Prefetch(
             'grouped_apartments',
@@ -67,16 +66,27 @@ def HOME2(request):
                 rooms.add(apt.rooms.strip())
         property_item.room_counts = sorted(rooms, key=sort_room_key)
 
-
     latest_properties = Property.objects.order_by('-updated_at')[:9]
 
+    # Add prefetch to attractive_properties too
+    attractive_properties = Property.objects.prefetch_related(
+        Prefetch(
+            'grouped_apartments',
+            queryset=GroupedApartment.objects.only('rooms'),
+            to_attr='safe_grouped_apartments'
+        )
+    ).order_by('-low_price')[:4]
 
-    # Fetch properties in the top three attractive areas
-    attractive_properties = Property.objects.order_by('-low_price')[:3]
+    for property in attractive_properties:
+        rooms = set()
+        for apt in getattr(property, 'safe_grouped_apartments', []):
+            if apt.rooms and apt.rooms.strip():
+                rooms.add(apt.rooms.strip())
+        property.room_counts = sorted(rooms, key=sort_room_key)
+
     context = {
-        # 'location': location,
         'property_category': property_category,
-        'developer' : developer,
+        'developer': developer,
         'properties': properties,
         'latest_properties': latest_properties,
         'attractive_properties': attractive_properties,
