@@ -2,14 +2,16 @@
 h1,h2,h3,h4,h5{
  font-family: 'Mulish', sans-serif;
  font-family: 'Poppins', sans-serif;
-font-weight: 600;
+/* font-weight: 600; */
 
 }
 input{
  font-family: 'Mulish', sans-serif;
  font-family: 'Poppins', sans-serif;
 }
-p,span,a{
+p,
+span,
+a{
  font-family: 'Mulish', sans-serif;
  font-family: 'Poppins', sans-serif;
 }
@@ -189,7 +191,7 @@ p,span,a{
    justify-content:center;
  }
  .section-two-text{
-   height: 230px;
+   /* height: 230px; */
    width: 60%;
    display: flex;
    flex-direction: column;
